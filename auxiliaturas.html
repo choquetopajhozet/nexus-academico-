@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exámenes de Auxiliaturas | Nexus Académico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <a href="index.html" class="logo">NEXUS <span>ACADÉMICO</span></a>
+        <p>Biblioteca universitaria</p>
+    </header>
+
+    <main class="seccion">
+        <a href="index.html" class="volver">← Volver al inicio</a>
+
+        <p class="etiqueta">MATERIAL DE PRÁCTICA</p>
+        <h2>Exámenes de Auxiliaturas</h2>
+        <p class="texto-seccion">Selecciona la materia que necesitas.</p>
+
+        <div class="materias">
+            <article class="tarjeta-materia">
+                <h3>MAT</h3>
+                <p>Matemática</p>
+                <button class="boton-secundario" onclick="mostrarAviso('MAT 1 de Auxiliaturas')">MAT 1</button>
+                <button class="boton-secundario" onclick="mostrarAviso('MAT 2 de Auxiliaturas')">MAT 2</button>
+                <button class="boton-secundario" onclick="mostrarAviso('MAT 3 de Auxiliaturas')">MAT 3</button>
+            </article>
+
+            <article class="tarjeta-materia">
+                <h3>FIS</h3>
+                <p>Física</p>
+                <button class="boton-secundario" onclick="mostrarAviso('FIS 1 de Auxiliaturas')">FIS 1</button>
+                <button class="boton-secundario" onclick="mostrarAviso('FIS 2 de Auxiliaturas')">FIS 2</button>
+                <button class="boton-secundario" onclick="mostrarAviso('FIS 3 de Auxiliaturas')">FIS 3</button>
+            </article>
+
+            <article class="tarjeta-materia">
+                <h3>QMC</h3>
+                <p>Química</p>
+                <button class="boton-secundario" onclick="mostrarAviso('QMC Orgánica de Auxiliaturas')">QMC ORG.</button>
+                <button class="boton-secundario" onclick="mostrarAviso('QMC Inorgánica de Auxiliaturas')">QMC INORG.</button>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>NEXUS ACADÉMICO</p>
+        <small>Un espacio para aprender, compartir y crecer.</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

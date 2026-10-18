@@ -1,0 +1,403 @@
+
+/* =================================
+   NEXUS ACADÉMICO - DISEÑO PRINCIPAL
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6fa;
+    color: #17243c;
+    line-height: 1.6;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    background: #07162f;
+    color: white;
+    padding: 25px 8%;
+    border-bottom: 3px solid #c6a75e;
+}
+
+.logo {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #d7bd7a;
+}
+
+.encabezado p {
+    color: #c5cede;
+    font-size: 13px;
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+/* PORTADA PRINCIPAL */
+
+.portada {
+    background:
+        radial-gradient(ellipse at 85% 20%, #183966 0%, transparent 42%),
+        linear-gradient(135deg, #07162f, #0c2346);
+    color: white;
+    padding: 85px 8% 95px;
+    position: relative;
+    overflow: hidden;
+}
+
+.portada::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid rgba(215, 189, 122, 0.18);
+    border-radius: 50%;
+    right: -100px;
+    bottom: -150px;
+    pointer-events: none;
+}
+
+.etiqueta {
+    color: #b4944f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.portada .etiqueta {
+    color: #e1c783;
+}
+
+.portada h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+}
+
+.portada h1 span {
+    color: #dfc37d;
+}
+
+.descripcion {
+    max-width: 540px;
+    color: #c6d1e1;
+    font-size: 16px;
+    margin-bottom: 42px;
+}
+
+/* BOTONES PRINCIPALES */
+
+.menu-principal {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.boton-menu {
+    background: #ffffff;
+    color: #10213e;
+    text-decoration: none;
+    padding: 25px 22px;
+    min-height: 145px;
+    border-radius: 10px;
+    border: 1px solid #e1e5ed;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.boton-menu:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.numero {
+    color: #a48643;
+    font-size: 13px;
+    font-weight: 800;
+    border-right: 1px solid #e0e4eb;
+    padding-right: 12px;
+}
+
+.boton-menu strong {
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.boton-menu small {
+    display: block;
+    color: #718096;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.flecha {
+    color: #a48643;
+    font-size: 23px;
+    margin-left: auto;
+    align-self: center;
+}
+
+/* SECCIONES */
+
+.seccion {
+    padding: 75px 8%;
+    scroll-margin-top: 15px;
+}
+
+.seccion:nth-of-type(odd) {
+    background: #ffffff;
+}
+
+.volver {
+    display: inline-block;
+    color: #304b72;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+.volver:hover {
+    color: #a48643;
+}
+
+.seccion h2,
+.comentarios h2 {
+    font-size: clamp(27px, 4vw, 38px);
+    color: #0a1b38;
+    margin-bottom: 8px;
+}
+
+.texto-seccion {
+    color: #748096;
+    margin-bottom: 30px;
+}
+
+/* TARJETAS DE MATERIAS */
+
+.materias {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.tarjeta-materia {
+    background: #ffffff;
+    border: 1px solid #e3e8f0;
+    border-radius: 12px;
+    padding: 28px 23px;
+    box-shadow: 0 5px 20px rgba(14, 34, 66, 0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-materia:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(14, 34, 66, 0.1);
+}
+
+.tarjeta-materia h3 {
+    color: #102b53;
+    font-size: 27px;
+    letter-spacing: 2px;
+}
+
+.tarjeta-materia p {
+    color: #7c8799;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.boton-secundario {
+    display: inline-block;
+    background: #f1f4f9;
+    border: 1px solid #dfe5ef;
+    color: #19365f;
+    padding: 10px 13px;
+    border-radius: 6px;
+    margin: 4px 3px 4px 0;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.boton-secundario:hover {
+    background: #102b53;
+    color: white;
+}
+
+/* COMENTARIOS */
+
+.comentarios {
+    background: #eaf0f7;
+    padding: 75px 8%;
+}
+
+.comentarios form {
+    max-width: 650px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #dfe6ef;
+    box-shadow: 0 8px 25px rgba(14, 34, 66, 0.05);
+}
+
+.comentarios label {
+    display: block;
+    color: #203554;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.comentarios input,
+.comentarios textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #dce3ed;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font: inherit;
+    font-size: 14px;
+    color: #17243c;
+    background: #fbfcfe;
+    outline: none;
+}
+
+.comentarios input:focus,
+.comentarios textarea:focus {
+    border-color: #284b7a;
+    box-shadow: 0 0 0 3px rgba(40, 75, 122, 0.1);
+}
+
+.comentarios textarea {
+    resize: vertical;
+}
+
+.boton-enviar {
+    background: #0b2143;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 13px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-enviar:hover {
+    background: #244675;
+}
+
+/* COMENTARIOS PUBLICADOS */
+
+#lista-comentarios {
+    max-width: 650px;
+    margin-top: 25px;
+}
+
+.comentario-publicado {
+    background: white;
+    border-left: 4px solid #b4944f;
+    padding: 18px;
+    border-radius: 7px;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.comentario-publicado strong {
+    color: #102b53;
+}
+
+.comentario-publicado p {
+    color: #59677c;
+    margin-top: 6px;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    background: #07162f;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer p {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #dfc37d;
+}
+
+footer small {
+    color: #b9c4d5;
+    display: block;
+    margin-top: 7px;
+}
+
+/* ADAPTACIÓN A CELULARES Y TABLETS */
+
+@media (max-width: 900px) {
+    .menu-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .boton-menu {
+        min-height: auto;
+    }
+
+    .materias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .encabezado {
+        padding: 20px 6%;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .portada,
+    .seccion,
+    .comentarios {
+        padding: 55px 6%;
+    }
+
+    .materias {
+        grid-template-columns: 1fr;
+    }
+
+    .comentarios form {
+        padding: 20px;
+    }
+}
