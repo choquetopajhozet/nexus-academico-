@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,52 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exámenes de C.B. | Nexus Académico</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6fa;
+            color: #17243b;
+        }
+
+        header {
+            background: #0b1730;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 4px solid #d4af37;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #d9e1ef;
+            margin-bottom: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .volver {
+            display: inline-block;
+            background: #0b1730;
+            color: white;
+            text-decoration: none;
+            padding: 11px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background: #d4af37;
+            color: #0b1730;
+        }
+
+        .presentacion {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .presentacion h2 {
+            color: #0b1730;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .presentacion p {
+            color: #5c6678;
+            line-height: 1.6;
+        }
+
+        .departamento {
+            background: white;
+            padding: 25px;
+            margin-bottom: 28px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(11, 23, 48, 0.08);
+            border-top: 4px solid #d4af37;
+        }
+
+        .departamento h2 {
+            color: #0b1730;
+            font-size: 21px;
+            margin: 0 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e3e7ef;
+        }
+
+        .materias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+        }
+
+        .materias button {
+            background: #10264a;
+            color: white;
+            border: 1px solid #d4af37;
+            border-radius: 9px;
+            padding: 16px 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .materias button:hover {
+            background: #d4af37;
+            color: #0b1730;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #0b1730;
+            color: #d9e1ef;
+            text-align: center;
+            padding: 22px 15px;
+            margin-top: 45px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 500px) {
+            header h1 {
+                font-size: 23px;
+            }
+
+            .departamento {
+                padding: 18px;
+            }
+
+            .materias {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <header class="encabezado">
-        <a href="index.html" class="logo">NEXUS <span>ACADÉMICO</span></a>
-        <p>Biblioteca universitaria</p>
+    <header>
+        <h1>NEXUS ACADÉMICO</h1>
+        <p>Tu espacio de apoyo universitario</p>
     </header>
 
-    <main class="seccion">
+    <main>
         <a href="index.html" class="volver">← Volver al inicio</a>
 
-        <p class="etiqueta">BIBLIOTECA ACADÉMICA</p>
-        <h2>Exámenes de C.B.</h2>
-        <p class="texto-seccion">Selecciona la materia que necesitas.</p>
+        <section class="presentacion">
+            <h2>Exámenes de C.B.</h2>
+            <p>
+                Encuentra y organiza el material académico por departamento
+                y código de materia.
+            </p>
+        </section>
 
-        <div class="materias">
-            <article class="tarjeta-materia">
-                <h3>MAT</h3>
-                <p>Matemática</p>
-                <button class="boton-secundario" onclick="mostrarAviso('MAT 1 de C.B.')">MAT 1</button>
-                <button class="boton-secundario" onclick="mostrarAviso('MAT 2 de C.B.')">MAT 2</button>
-                <button class="boton-secundario" onclick="mostrarAviso('MAT 3 de C.B.')">MAT 3</button>
-            </article>
+        <section class="departamento">
+            <h2>Departamento de Matemática</h2>
+            <div class="materias">
+                <button onclick="mostrarAviso('Álgebra I - MAT 1100')">MAT 1100</button>
+                <button onclick="mostrarAviso('Cálculo I - MAT 1101')">MAT 1101</button>
+                <button onclick="mostrarAviso('Cálculo II - MAT 1102')">MAT 1102</button>
+                <button onclick="mostrarAviso('Álgebra II - MAT 1103')">MAT 1103</button>
+                <button onclick="mostrarAviso('Fundamentos de Programación I - MAT 1104')">MAT 1104</button>
+                <button onclick="mostrarAviso('Métodos Numéricos I - MAT 1105')">MAT 1105</button>
+                <button onclick="mostrarAviso('Métodos Numéricos II - MAT 2106')">MAT 2106</button>
+                <button onclick="mostrarAviso('Ecuaciones Diferenciales I - MAT 1207')">MAT 1207</button>
+                <button onclick="mostrarAviso('Ecuaciones Diferenciales II - MAT 2208')">MAT 2208</button>
+                <button onclick="mostrarAviso('Variable Compleja - MAT 1218')">MAT 1218</button>
+                <button onclick="mostrarAviso('Análisis Vectorial y Tensorial - MAT 1313')">MAT 1313</button>
+                <button onclick="mostrarAviso('Transformadas Integrales - MAT 2315')">MAT 2315</button>
+                <button onclick="mostrarAviso('Estadística I - MAT 1135')">MAT 1135</button>
+                <button onclick="mostrarAviso('Estadística II - MAT 1136')">MAT 1136</button>
+                <button onclick="mostrarAviso('Estadística Aplicada - MAT 1437')">MAT 1437</button>
+            </div>
+        </section>
 
-            <article class="tarjeta-materia">
-                <h3>FIS</h3>
-                <p>Física</p>
-                <button class="boton-secundario" onclick="mostrarAviso('FIS 1 de C.B.')">FIS 1</button>
-                <button class="boton-secundario" onclick="mostrarAviso('FIS 2 de C.B.')">FIS 2</button>
-                <button class="boton-secundario" onclick="mostrarAviso('FIS 3 de C.B.')">FIS 3</button>
-            </article>
+        <section class="departamento">
+            <h2>Departamento de Física</h2>
+            <div class="materias">
+                <button onclick="mostrarAviso('Física I - FIS 1100')">FIS 1100</button>
+                <button onclick="mostrarAviso('Física II - FIS 1102')">FIS 1102</button>
+                <button onclick="mostrarAviso('Física III - FIS 1200')">FIS 1200</button>
+            </div>
+        </section>
 
-            <article class="tarjeta-materia">
-                <h3>QMC</h3>
-                <p>Química</p>
-                <button class="boton-secundario" onclick="mostrarAviso('QMC Orgánica de C.B.')">QMC ORG.</button>
-                <button class="boton-secundario" onclick="mostrarAviso('QMC Inorgánica de C.B.')">QMC INORG.</button>
-            </article>
-        </div>
+        <section class="departamento">
+            <h2>Departamento de Química</h2>
+            <div class="materias">
+                <button onclick="mostrarAviso('Química General - QMC 1100')">QMC 1100</button>
+                <button onclick="mostrarAviso('Química Inorgánica - QMC 1104')">QMC 1104</button>
+                <button onclick="mostrarAviso('Química Analítica Cualitativa - QMC 1107')">QMC 1107</button>
+                <button onclick="mostrarAviso('Química Analítica General - QMC 1320')">QMC 1320</button>
+                <button onclick="mostrarAviso('Química Orgánica - QMC 1200')">QMC 1200</button>
+                <button onclick="mostrarAviso('Fisicoquímica I - QMC 1206')">QMC 1206</button>
+                <button onclick="mostrarAviso('Fisicoquímica II - QMC 1300')">QMC 1300</button>
+                <button onclick="mostrarAviso('Análisis Instrumental - QMC 1400')">QMC 1400</button>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>NEXUS ACADÉMICO</p>
-        <small>Un espacio para aprender, compartir y crecer.</small>
+        <p>© 2026 Nexus Académico | Proyecto universitario</p>
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        function mostrarAviso(materia) {
+            alert("El material de " + materia + " estará disponible próximamente.");
+        }
+    </script>
+
 </body>
 </html>
