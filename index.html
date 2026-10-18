@@ -6,219 +6,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Académico</title>
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        .comentarios {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 25px;
-            background: #ffffff;
-            border: 2px solid #800020;
-            border-radius: 12px;
-        }
-
-        .comentarios h2 {
-            color: #800020;
-            margin-bottom: 15px;
-        }
-
-        #form-comentarios textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 14px;
-            border: 1px solid #800020;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 16px;
-            resize: vertical;
-            box-sizing: border-box;
-            margin-bottom: 12px;
-        }
-
-        .boton-enviar {
-            background: #800020;
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .boton-enviar:hover {
-            background: #5c0017;
-        }
-
-        #lista-comentarios {
-            margin-top: 25px;
-        }
-
-        .comentario-publicado {
-            padding: 15px;
-            margin-bottom: 12px;
-            background: #f8f4f5;
-            border-left: 4px solid #800020;
-            border-radius: 6px;
-            overflow-wrap: anywhere;
-            white-space: pre-wrap;
-        }
-
-        .comentario-publicado p {
-            margin: 0;
-        }
-
-        .boton-eliminar {
-            margin-top: 12px;
-            background: #555555;
-            color: #ffffff;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .boton-eliminar:hover {
-            background: #333333;
-        }
-
-        #mensaje-estado {
-            color: #800020;
-            margin-top: 10px;
-        }
-    </style>
 </head>
-
 <body>
 
     <header class="encabezado">
         <a href="index.html" class="logo">
             NEXUS <span>ACADÉMICO</span>
         </a>
-        <p>Tu espacio de recursos universitarios</p>
+        <p>Tu espacio de aprendizaje universitario</p>
     </header>
 
     <main>
-        <section id="inicio" class="portada">
+        <section class="portada">
+            <div class="etiqueta">UNIVERSIDAD TÉCNICA DE ORURO</div>
 
-            <p class="etiqueta">PLATAFORMA UNIVERSITARIA</p>
-
-            <h1>
-                Tu conocimiento,<br>
+            <h1>Tu conocimiento,<br>
                 <span>tu futuro.</span>
             </h1>
 
             <p class="descripcion">
-                Encuentra exámenes, material académico e información
-                universitaria en un solo lugar.
+                Encuentra recursos, comparte conocimientos
+                y fortalece tu formación académica.
             </p>
 
             <div class="menu-principal">
-
                 <a href="cb.html" class="boton-menu">
                     <span class="numero">01</span>
-                    <span>
-                        <strong>Exámenes de C.B.</strong>
-                        <small>Material de cursos básicos</small>
+                    <span class="texto-boton">
+                        <strong>Ciclo Básico</strong>
+                        <small>Material académico de Ciclo Básico</small>
                     </span>
                     <span class="flecha">→</span>
                 </a>
 
                 <a href="auxiliaturas.html" class="boton-menu">
                     <span class="numero">02</span>
-                    <span>
-                        <strong>Exámenes de Auxiliaturas</strong>
-                        <small>Practica y prepárate</small>
+                    <span class="texto-boton">
+                        <strong>Auxiliaturas</strong>
+                        <small>Material de apoyo académico</small>
                     </span>
                     <span class="flecha">→</span>
                 </a>
 
                 <a href="ingenieros.html" class="boton-menu">
                     <span class="numero">03</span>
-                    <span>
-                        <strong>Información de Ingenieros</strong>
-                        <small>Consulta por materia</small>
+                    <span class="texto-boton">
+                        <strong>Ingenieros</strong>
+                        <small>Recursos para estudiantes</small>
                     </span>
                     <span class="flecha">→</span>
                 </a>
-
             </div>
         </section>
 
-        <section class="comentarios" id="comentarios">
+        <section class="seccion">
+            <h2>Nuestra comunidad</h2>
+            <p>
+                Un espacio para aprender, compartir y crecer juntos.
+            </p>
 
-            <h2>Déjanos tu comentario</h2>
+            <div class="materias">
+                <div class="tarjeta-materia">
+                    <h3>Aprende</h3>
+                    <p>Refuerza tus conocimientos con recursos académicos.</p>
+                </div>
 
-            <p>Comparte tu opinión o sugerencia con nosotros.</p>
+                <div class="tarjeta-materia">
+                    <h3>Comparte</h3>
+                    <p>Intercambia ideas y materiales con otros estudiantes.</p>
+                </div>
 
-            <form id="form-comentarios">
-                <textarea
-                    id="mensaje"
-                    placeholder="Escribe tu comentario..."
-                    required
-                ></textarea>
+                <div class="tarjeta-materia">
+                    <h3>Progresa</h3>
+                    <p>Continúa desarrollando tus habilidades profesionales.</p>
+                </div>
+            </div>
+        </section>
 
-                <button type="submit" class="boton-enviar">
+        <section class="seccion">
+            <h2>Comentarios</h2>
+            <p>Tu opinión nos ayuda a mejorar.</p>
+
+            <div class="comentarios">
+                <textarea id="mensaje"
+                    placeholder="Escribe tu comentario aquí..."
+                    maxlength="500"></textarea>
+
+                <button class="boton-enviar" id="publicar" type="button">
                     Publicar comentario
                 </button>
-            </form>
 
-            <p id="mensaje-estado" aria-live="polite"></p>
-
-            <div id="lista-comentarios"></div>
-
+                <div id="lista-comentarios"></div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>NEXUS ACADÉMICO</p>
-        <small>Un espacio para aprender, compartir y crecer.</small>
+        <a href="index.html" class="logo logo-footer">
+            NEXUS <span>ACADÉMICO</span>
+        </a>
+        <p>Unidos por el conocimiento.</p>
+        <p>© 2026 Nexus Académico</p>
+        <p>Universidad Técnica de Oruro</p>
     </footer>
 
     <script>
-        const formulario = document.getElementById("form-comentarios");
-        const campoMensaje = document.getElementById("mensaje");
-        const listaComentarios = document.getElementById("lista-comentarios");
-        const estado = document.getElementById("mensaje-estado");
+        const mensaje = document.getElementById("mensaje");
+        const publicar = document.getElementById("publicar");
+        const lista = document.getElementById("lista-comentarios");
 
-        formulario.addEventListener("submit", function(evento) {
-            evento.preventDefault();
+        publicar.addEventListener("click", function () {
+            const texto = mensaje.value.trim();
 
-            const mensaje = campoMensaje.value.trim();
-
-            if (mensaje === "") {
-                estado.textContent = "Escribe un comentario antes de publicar.";
+            if (texto === "") {
+                alert("Escribe un comentario primero.");
                 return;
             }
 
             const comentario = document.createElement("div");
             comentario.className = "comentario-publicado";
 
-            const texto = document.createElement("p");
-            texto.textContent = mensaje;
+            const contenido = document.createElement("p");
+            contenido.textContent = texto;
 
-            const botonEliminar = document.createElement("button");
-            botonEliminar.type = "button";
-            botonEliminar.textContent = "🗑️ Eliminar";
-            botonEliminar.className = "boton-eliminar";
+            const eliminar = document.createElement("button");
+            eliminar.textContent = "Eliminar";
+            eliminar.className = "boton-eliminar";
 
-            botonEliminar.addEventListener("click", function() {
-                const confirmar = confirm(
-                    "¿Estás segura de que quieres eliminar este comentario?"
-                );
-
-                if (confirmar) {
-                    comentario.remove();
-                    estado.textContent = "Comentario eliminado.";
-                }
+            eliminar.addEventListener("click", function () {
+                comentario.remove();
             });
 
-            comentario.appendChild(texto);
-            comentario.appendChild(botonEliminar);
+            comentario.appendChild(contenido);
+            comentario.appendChild(eliminar);
+            lista.prepend(comentario);
 
-            listaComentarios.prepend(comentario);
-
-            campoMensaje.value = "";
-            estado.textContent = "¡Comentario publicado!";
+            mensaje.value = "";
         });
     </script>
 
