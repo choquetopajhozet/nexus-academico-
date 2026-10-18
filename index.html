@@ -6,14 +6,317 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Académico</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        :root {
+            --azul: #0b1730;
+            --azul-claro: #10264a;
+            --dorado: #d4af37;
+            --blanco: #ffffff;
+            --fondo: #f4f6fa;
+            --gris: #5c6678;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fondo);
+            color: var(--azul);
+        }
+
+        .encabezado {
+            background: var(--azul);
+            color: var(--blanco);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--dorado);
+        }
+
+        .logo {
+            display: inline-block;
+            color: var(--blanco);
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--dorado);
+        }
+
+        .encabezado p {
+            margin-top: 8px;
+            color: #d9e1ef;
+        }
+
+        .portada {
+            max-width: 900px;
+            margin: auto;
+            padding: 75px 20px 65px;
+            text-align: center;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #f8f0dc;
+            color: #8c7139;
+            border: 1px solid var(--dorado);
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            margin: 25px 0 18px;
+            font-size: clamp(40px, 7vw, 65px);
+            line-height: 1.15;
+            color: var(--azul);
+        }
+
+        h1 span {
+            color: #b4944f;
+        }
+
+        .descripcion {
+            max-width: 570px;
+            margin: 0 auto 35px;
+            color: var(--gris);
+            line-height: 1.7;
+        }
+
+        .menu-principal {
+            display: grid;
+            gap: 16px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .boton-menu {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px;
+            background: var(--blanco);
+            color: var(--azul);
+            text-align: left;
+            text-decoration: none;
+            border: 1px solid #e3e7ef;
+            border-left: 5px solid var(--dorado);
+            border-radius: 10px;
+            transition: 0.25s;
+        }
+
+        .boton-menu:hover {
+            transform: translateY(-3px);
+            border-color: var(--dorado);
+            box-shadow: 0 8px 20px rgba(11, 23, 48, 0.10);
+        }
+
+        .numero {
+            color: #a48643;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .texto-boton {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .texto-boton strong {
+            font-size: 17px;
+        }
+
+        .texto-boton small {
+            margin-top: 4px;
+            color: var(--gris);
+            font-size: 12px;
+        }
+
+        .flecha {
+            color: #b4944f;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .seccion {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--blanco);
+            border-top: 1px solid #e3e7ef;
+        }
+
+        .seccion h2 {
+            margin-bottom: 12px;
+            font-size: 32px;
+            color: var(--azul);
+        }
+
+        .seccion h2 span {
+            color: #b4944f;
+        }
+
+        .seccion > p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: var(--gris);
+            line-height: 1.7;
+        }
+
+        .materias {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            max-width: 950px;
+            margin: 30px auto 0;
+        }
+
+        .tarjeta-materia {
+            padding: 25px 18px;
+            background: var(--fondo);
+            border: 1px solid #e3e7ef;
+            border-top: 4px solid var(--dorado);
+            border-radius: 10px;
+        }
+
+        .tarjeta-materia h3 {
+            margin-bottom: 10px;
+            color: var(--azul);
+        }
+
+        .tarjeta-materia p {
+            color: var(--gris);
+            font-size: 14px;
+        }
+
+        .comentarios {
+            max-width: 650px;
+            margin: 30px auto 0;
+            padding: 25px;
+            text-align: left;
+            background: var(--fondo);
+            border: 1px solid #e3e7ef;
+            border-top: 4px solid var(--dorado);
+            border-radius: 10px;
+        }
+
+        .comentarios h3 {
+            margin-bottom: 12px;
+            color: var(--azul);
+        }
+
+        #mensaje {
+            width: 100%;
+            min-height: 120px;
+            padding: 14px;
+            font: inherit;
+            border: 1px solid #cbd3e0;
+            border-radius: 7px;
+            resize: vertical;
+            outline: none;
+        }
+
+        #mensaje:focus {
+            border-color: var(--dorado);
+        }
+
+        .boton-enviar {
+            margin-top: 12px;
+            padding: 12px 20px;
+            background: var(--azul);
+            color: var(--blanco);
+            border: 2px solid var(--dorado);
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .boton-enviar:hover {
+            background: var(--dorado);
+            color: var(--azul);
+        }
+
+        .comentario-publicado {
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--blanco);
+            border: 1px solid #e3e7ef;
+            border-left: 4px solid var(--dorado);
+            border-radius: 7px;
+            overflow-wrap: anywhere;
+        }
+
+        .comentario-publicado p {
+            white-space: pre-wrap;
+        }
+
+        .boton-eliminar {
+            margin-top: 10px;
+            padding: 7px 12px;
+            border: 1px solid #cbd3e0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 35px 20px;
+            text-align: center;
+            color: var(--blanco);
+            background: var(--azul);
+            border-top: 4px solid var(--dorado);
+        }
+
+        footer p {
+            margin-top: 8px;
+            color: #d9e1ef;
+            font-size: 13px;
+        }
+
+        footer .logo {
+            font-size: 22px;
+        }
+
+        @media (max-width: 650px) {
+            .portada {
+                padding: 50px 16px;
+            }
+
+            .materias {
+                grid-template-columns: 1fr;
+            }
+
+            .boton-menu {
+                gap: 12px;
+                padding: 16px 12px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .comentarios {
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <header class="encabezado">
         <a href="index.html" class="logo">
             NEXUS <span>ACADÉMICO</span>
         </a>
-        <p>Tu espacio de aprendizaje universitario</p>
+        <p>Tu espacio de apoyo universitario</p>
     </header>
 
     <main>
@@ -25,16 +328,17 @@
             </h1>
 
             <p class="descripcion">
-                Encuentra recursos, comparte conocimientos
-                y fortalece tu formación académica.
+                Encuentra recursos académicos, prepara tus materias
+                y fortalece tu formación universitaria.
             </p>
 
             <div class="menu-principal">
+
                 <a href="cb.html" class="boton-menu">
                     <span class="numero">01</span>
                     <span class="texto-boton">
                         <strong>Ciclo Básico</strong>
-                        <small>Material académico de Ciclo Básico</small>
+                        <small>Exámenes y materias de C.B.</small>
                     </span>
                     <span class="flecha">→</span>
                 </a>
@@ -56,90 +360,103 @@
                     </span>
                     <span class="flecha">→</span>
                 </a>
+
             </div>
         </section>
 
         <section class="seccion">
-            <h2>Nuestra comunidad</h2>
+            <h2>Aprendemos <span>juntos.</span></h2>
             <p>
-                Un espacio para aprender, compartir y crecer juntos.
+                Nexus Académico es un espacio para compartir
+                conocimientos, ideas y recursos universitarios.
             </p>
 
             <div class="materias">
                 <div class="tarjeta-materia">
                     <h3>Aprende</h3>
-                    <p>Refuerza tus conocimientos con recursos académicos.</p>
+                    <p>Refuerza tus conocimientos con materiales académicos.</p>
                 </div>
 
                 <div class="tarjeta-materia">
                     <h3>Comparte</h3>
-                    <p>Intercambia ideas y materiales con otros estudiantes.</p>
+                    <p>Comparte ideas y sugerencias con nuestra comunidad.</p>
                 </div>
 
                 <div class="tarjeta-materia">
                     <h3>Progresa</h3>
-                    <p>Continúa desarrollando tus habilidades profesionales.</p>
+                    <p>Continúa avanzando en tu formación profesional.</p>
                 </div>
             </div>
         </section>
 
         <section class="seccion">
             <h2>Comentarios</h2>
-            <p>Tu opinión nos ayuda a mejorar.</p>
+            <p>Tu opinión nos ayuda a mejorar Nexus Académico.</p>
 
             <div class="comentarios">
-                <textarea id="mensaje"
-                    placeholder="Escribe tu comentario aquí..."
-                    maxlength="500"></textarea>
+                <h3>💬 Deja tu comentario</h3>
 
-                <button class="boton-enviar" id="publicar" type="button">
-                    Publicar comentario
-                </button>
+                <form id="form-comentarios">
+                    <textarea id="mensaje"
+                        placeholder="Escribe tu comentario aquí..."
+                        maxlength="500"
+                        required></textarea>
 
-                <div id="lista-comentarios"></div>
+                    <button type="submit" class="boton-enviar">
+                        Publicar comentario
+                    </button>
+                </form>
+
+                <div id="lista-comentarios">
+                    <h3 style="margin-top: 25px;">Comentarios publicados</h3>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <a href="index.html" class="logo logo-footer">
+        <a href="index.html" class="logo">
             NEXUS <span>ACADÉMICO</span>
         </a>
         <p>Unidos por el conocimiento.</p>
-        <p>© 2026 Nexus Académico</p>
-        <p>Universidad Técnica de Oruro</p>
+        <p>© 2026 Nexus Académico | Proyecto universitario</p>
     </footer>
 
     <script>
+        const formulario = document.getElementById("form-comentarios");
         const mensaje = document.getElementById("mensaje");
-        const publicar = document.getElementById("publicar");
         const lista = document.getElementById("lista-comentarios");
 
-        publicar.addEventListener("click", function () {
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
             const texto = mensaje.value.trim();
 
             if (texto === "") {
-                alert("Escribe un comentario primero.");
+                alert("Escribe un comentario antes de publicar.");
                 return;
             }
 
-            const comentario = document.createElement("div");
-            comentario.className = "comentario-publicado";
+            const tarjeta = document.createElement("div");
+            tarjeta.className = "comentario-publicado";
 
             const contenido = document.createElement("p");
             contenido.textContent = texto;
 
             const eliminar = document.createElement("button");
-            eliminar.textContent = "Eliminar";
+            eliminar.type = "button";
             eliminar.className = "boton-eliminar";
+            eliminar.textContent = "Eliminar";
 
-            eliminar.addEventListener("click", function () {
-                comentario.remove();
+            eliminar.addEventListener("click", function() {
+                if (confirm("¿Deseas eliminar este comentario?")) {
+                    tarjeta.remove();
+                }
             });
 
-            comentario.appendChild(contenido);
-            comentario.appendChild(eliminar);
-            lista.prepend(comentario);
+            tarjeta.appendChild(contenido);
+            tarjeta.appendChild(eliminar);
+            lista.appendChild(tarjeta);
 
             mensaje.value = "";
         });
