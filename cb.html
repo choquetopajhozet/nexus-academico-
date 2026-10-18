@@ -71,13 +71,57 @@
             line-height: 1.6;
         }
 
+        .departamentos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .boton-departamento {
+            background: #10264a;
+            color: white;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 22px 12px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .boton-departamento span {
+            display: block;
+            font-size: 13px;
+            font-weight: normal;
+            margin-top: 7px;
+            color: #d9e1ef;
+        }
+
+        .boton-departamento:hover,
+        .boton-departamento.activo {
+            background: #d4af37;
+            color: #0b1730;
+            transform: translateY(-3px);
+        }
+
+        .boton-departamento:hover span,
+        .boton-departamento.activo span {
+            color: #0b1730;
+        }
+
         .departamento {
+            display: none;
             background: white;
             padding: 25px;
             margin-bottom: 28px;
             border-radius: 14px;
             box-shadow: 0 5px 18px rgba(11, 23, 48, 0.08);
             border-top: 4px solid #d4af37;
+        }
+
+        .departamento.visible {
+            display: block;
         }
 
         .departamento h2 {
@@ -121,9 +165,13 @@
             font-size: 14px;
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
             header h1 {
                 font-size: 23px;
+            }
+
+            .departamentos {
+                grid-template-columns: 1fr;
             }
 
             .departamento {
@@ -150,13 +198,29 @@
 
         <section class="presentacion">
             <h2>Exámenes de C.B.</h2>
-            <p>
-                Encuentra y organiza el material académico por departamento
-                y código de materia.
-            </p>
+            <p>Selecciona un departamento para ver sus materias.</p>
         </section>
 
-        <section class="departamento">
+        <!-- BOTONES PRINCIPALES -->
+        <div class="departamentos">
+            <button class="boton-departamento" onclick="mostrarDepartamento('mat', this)">
+                MAT
+                <span>Matemática</span>
+            </button>
+
+            <button class="boton-departamento" onclick="mostrarDepartamento('fis', this)">
+                FIS
+                <span>Física</span>
+            </button>
+
+            <button class="boton-departamento" onclick="mostrarDepartamento('qmc', this)">
+                QMC
+                <span>Química</span>
+            </button>
+        </div>
+
+        <!-- MATEMÁTICA -->
+        <section id="mat" class="departamento">
             <h2>Departamento de Matemática</h2>
             <div class="materias">
                 <button onclick="mostrarAviso('Álgebra I - MAT 1100')">MAT 1100</button>
@@ -177,7 +241,8 @@
             </div>
         </section>
 
-        <section class="departamento">
+        <!-- FÍSICA -->
+        <section id="fis" class="departamento">
             <h2>Departamento de Física</h2>
             <div class="materias">
                 <button onclick="mostrarAviso('Física I - FIS 1100')">FIS 1100</button>
@@ -186,7 +251,8 @@
             </div>
         </section>
 
-        <section class="departamento">
+        <!-- QUÍMICA -->
+        <section id="qmc" class="departamento">
             <h2>Departamento de Química</h2>
             <div class="materias">
                 <button onclick="mostrarAviso('Química General - QMC 1100')">QMC 1100</button>
@@ -205,9 +271,20 @@
         <p>© 2026 Nexus Académico | Proyecto universitario</p>
     </footer>
 
-    <script src="script.js"></script>
-
     <script>
+        function mostrarDepartamento(id, boton) {
+            document.querySelectorAll('.departamento').forEach(function(seccion) {
+                seccion.classList.remove('visible');
+            });
+
+            document.querySelectorAll('.boton-departamento').forEach(function(b) {
+                b.classList.remove('activo');
+            });
+
+            document.getElementById(id).classList.add('visible');
+            boton.classList.add('activo');
+        }
+
         function mostrarAviso(materia) {
             alert("El material de " + materia + " estará disponible próximamente.");
         }
