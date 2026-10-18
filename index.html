@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,19 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Académico</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .comentarios {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 25px;
+            background: #ffffff;
+            border: 2px solid #800020;
+            border-radius: 12px;
+        }
+
+        .comentarios h2 {
+            color: #800020;
+            margin-bottom: 15px;
+        }
+
+        #form-comentarios textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 14px;
+            border: 1px solid #800020;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        .boton-enviar {
+            background: #800020;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .boton-enviar:hover {
+            background: #5c0017;
+        }
+
+        #lista-comentarios {
+            margin-top: 25px;
+        }
+
+        .comentario-publicado {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f8f4f5;
+            border-left: 4px solid #800020;
+            border-radius: 6px;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+
+        .comentario-publicado p {
+            margin: 0;
+        }
+
+        .boton-eliminar {
+            margin-top: 12px;
+            background: #555555;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .boton-eliminar:hover {
+            background: #333333;
+        }
+
+        #mensaje-estado {
+            color: #800020;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
     <header class="encabezado">
-        <a href="index.html" class="logo">NEXUS <span>ACADÉMICO</span></a>
+        <a href="index.html" class="logo">
+            NEXUS <span>ACADÉMICO</span>
+        </a>
         <p>Tu espacio de recursos universitarios</p>
     </header>
 
     <main>
         <section id="inicio" class="portada">
+
             <p class="etiqueta">PLATAFORMA UNIVERSITARIA</p>
 
-            <h1>Tu conocimiento,<br><span>tu futuro.</span></h1>
+            <h1>
+                Tu conocimiento,<br>
+                <span>tu futuro.</span>
+            </h1>
 
             <p class="descripcion">
                 Encuentra exámenes, material académico e información
@@ -55,12 +143,84 @@
 
             </div>
         </section>
+
+        <section class="comentarios" id="comentarios">
+
+            <h2>Déjanos tu comentario</h2>
+
+            <p>Comparte tu opinión o sugerencia con nosotros.</p>
+
+            <form id="form-comentarios">
+                <textarea
+                    id="mensaje"
+                    placeholder="Escribe tu comentario..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="boton-enviar">
+                    Publicar comentario
+                </button>
+            </form>
+
+            <p id="mensaje-estado" aria-live="polite"></p>
+
+            <div id="lista-comentarios"></div>
+
+        </section>
     </main>
 
     <footer>
         <p>NEXUS ACADÉMICO</p>
         <small>Un espacio para aprender, compartir y crecer.</small>
     </footer>
+
+    <script>
+        const formulario = document.getElementById("form-comentarios");
+        const campoMensaje = document.getElementById("mensaje");
+        const listaComentarios = document.getElementById("lista-comentarios");
+        const estado = document.getElementById("mensaje-estado");
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const mensaje = campoMensaje.value.trim();
+
+            if (mensaje === "") {
+                estado.textContent = "Escribe un comentario antes de publicar.";
+                return;
+            }
+
+            const comentario = document.createElement("div");
+            comentario.className = "comentario-publicado";
+
+            const texto = document.createElement("p");
+            texto.textContent = mensaje;
+
+            const botonEliminar = document.createElement("button");
+            botonEliminar.type = "button";
+            botonEliminar.textContent = "🗑️ Eliminar";
+            botonEliminar.className = "boton-eliminar";
+
+            botonEliminar.addEventListener("click", function() {
+                const confirmar = confirm(
+                    "¿Estás segura de que quieres eliminar este comentario?"
+                );
+
+                if (confirmar) {
+                    comentario.remove();
+                    estado.textContent = "Comentario eliminado.";
+                }
+            });
+
+            comentario.appendChild(texto);
+            comentario.appendChild(botonEliminar);
+
+            listaComentarios.prepend(comentario);
+
+            campoMensaje.value = "";
+            estado.textContent = "¡Comentario publicado!";
+        });
+    </script>
 
 </body>
 </html>
