@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -77,6 +81,10 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 18px;
             margin-bottom: 28px;
+        }
+
+        button {
+            font-family: inherit;
         }
 
         .boton-departamento {
@@ -189,116 +197,107 @@
 
 <body>
 
-    <header>
-        <h1>NEXUS ACADÉMICO</h1>
-        <p>Tu espacio de apoyo universitario</p>
-    </header>
+<header>
+    <h1>NEXUS ACADÉMICO</h1>
+    <p>Tu espacio de apoyo universitario</p>
+</header>
 
-    <main>
-        <a href="index.html" class="volver">← Volver al inicio</a>
+<main>
+    <a href="./index.html" class="volver">← Volver al inicio</a>
 
-        <section class="presentacion">
-            <h2>Auxiliaturas</h2>
-            <p>
-                Selecciona un departamento para consultar
-                las materias y sus recursos académicos.
-            </p>
-        </section>
+    <section class="presentacion">
+        <h2>Auxiliaturas</h2>
+        <p>
+            Selecciona un departamento para consultar
+            las materias y sus recursos académicos.
+        </p>
+    </section>
 
-        <!-- DEPARTAMENTOS -->
-        <div class="departamentos">
-
-            <button class="boton-departamento"
+    <div class="departamentos">
+        <button class="boton-departamento"
                 onclick="mostrarDepartamento('mat', this)">
-                MAT
-                <span>Matemática</span>
-            </button>
+            MAT
+            <span>Matemática</span>
+        </button>
 
-            <button class="boton-departamento"
+        <button class="boton-departamento"
                 onclick="mostrarDepartamento('fis', this)">
-                FIS
-                <span>Física</span>
-            </button>
+            FIS
+            <span>Física</span>
+        </button>
 
-            <button class="boton-departamento"
+        <button class="boton-departamento"
                 onclick="mostrarDepartamento('qmc', this)">
-                QMC
-                <span>Química</span>
-            </button>
+            QMC
+            <span>Química</span>
+        </button>
+    </div>
 
+    <!-- MATEMÁTICA -->
+    <section id="mat" class="departamento">
+        <h2>Auxiliaturas de Matemática</h2>
+
+        <div class="materias">
+            <button onclick="mostrarAviso('MAT 1100')">MAT 1100</button>
+            <button onclick="mostrarAviso('MAT 1101')">MAT 1101</button>
+            <button onclick="mostrarAviso('MAT 1102')">MAT 1102</button>
+            <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
+            <button onclick="mostrarAviso('MAT 1105')">MAT 1105</button>
+            <button onclick="mostrarAviso('MAT 1207')">MAT 1207</button>
+            <button onclick="mostrarAviso('MAT 1135')">MAT 1135</button>
+            <button onclick="mostrarAviso('MAT 1437')">MAT 1437</button>
         </div>
+    </section>
 
-        <!-- MATEMÁTICA -->
-        <section id="mat" class="departamento">
-            <h2>Auxiliaturas de Matemática</h2>
+    <!-- FÍSICA -->
+    <section id="fis" class="departamento">
+        <h2>Auxiliaturas de Física</h2>
 
-            <div class="materias">
-                <button onclick="mostrarAviso('MAT 1100')">MAT 1100</button>
-                <button onclick="mostrarAviso('MAT 1101')">MAT 1101</button>
-                <button onclick="mostrarAviso('MAT 1102')">MAT 1102</button>
-                <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
-                <button onclick="mostrarAviso('MAT 1104')">MAT 1104</button>
-                <button onclick="mostrarAviso('MAT 1105')">MAT 1105</button>
-                <button onclick="mostrarAviso('MAT 1135')">MAT 1135</button>
-                <button onclick="mostrarAviso('MAT 1136')">MAT 1136</button>
-            </div>
-        </section>
+        <div class="materias">
+            <button onclick="mostrarAviso('FIS 1100')">FIS 1100</button>
+            <button onclick="mostrarAviso('FIS 1102')">FIS 1102</button>
+            <button onclick="mostrarAviso('FIS 1200')">FIS 1200</button>
+        </div>
+    </section>
 
-        <!-- FÍSICA -->
-        <section id="fis" class="departamento">
-            <h2>Auxiliaturas de Física</h2>
+    <!-- QUÍMICA -->
+    <section id="qmc" class="departamento">
+        <h2>Auxiliaturas de Química</h2>
 
-            <div class="materias">
-                <button onclick="mostrarAviso('FIS 1100')">FIS 1100</button>
-                <button onclick="mostrarAviso('FIS 1102')">FIS 1102</button>
-                <button onclick="mostrarAviso('FIS 1200')">FIS 1200</button>
-            </div>
-        </section>
+        <div class="materias">
+            <button onclick="mostrarAviso('QMC 1100')">QMC 1100</button>
+        </div>
+    </section>
 
-        <!-- QUÍMICA -->
-        <section id="qmc" class="departamento">
-            <h2>Auxiliaturas de Química</h2>
+</main>
 
-            <div class="materias">
-                <button onclick="mostrarAviso('QMC 1100')">QMC 1100</button>
-                <button onclick="mostrarAviso('QMC 1104')">QMC 1104</button>
-                <button onclick="mostrarAviso('QMC 1107')">QMC 1107</button>
-                <button onclick="mostrarAviso('QMC 1320')">QMC 1320</button>
-                <button onclick="mostrarAviso('QMC 1200')">QMC 1200</button>
-                <button onclick="mostrarAviso('QMC 1206')">QMC 1206</button>
-                <button onclick="mostrarAviso('QMC 1300')">QMC 1300</button>
-                <button onclick="mostrarAviso('QMC 1400')">QMC 1400</button>
-            </div>
-        </section>
+<footer>
+    <p>© 2026 Nexus Académico | Proyecto universitario</p>
+</footer>
 
-    </main>
+<script>
+    function mostrarDepartamento(id, boton) {
+        document.querySelectorAll('.departamento').forEach(function(seccion) {
+            seccion.classList.remove('visible');
+        });
 
-    <footer>
-        <p>© 2026 Nexus Académico | Proyecto universitario</p>
-    </footer>
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
 
-    <script>
-        function mostrarDepartamento(id, boton) {
-            document.querySelectorAll('.departamento').forEach(function(seccion) {
-                seccion.classList.remove('visible');
-            });
+        document.getElementById(id).classList.add('visible');
+        boton.classList.add('activo');
+    }
 
-            document.querySelectorAll('.boton-departamento').forEach(function(b) {
-                b.classList.remove('activo');
-            });
-
-            document.getElementById(id).classList.add('visible');
-            boton.classList.add('activo');
-        }
-
-        function mostrarAviso(materia) {
-            alert(
-                "Los recursos de la auxiliatura de " +
-                materia +
-                " estarán disponibles próximamente."
-            );
-        }
-    </script>
+    function mostrarAviso(materia) {
+        alert(
+            'Los recursos de la auxiliatura de ' +
+            materia +
+            ' estarán disponibles próximamente.'
+        );
+    }
+</script>
 
 </body>
 </html>
+
