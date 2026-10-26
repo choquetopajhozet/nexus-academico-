@@ -421,21 +421,21 @@
         <p>© 2026 Nexus Académico | Proyecto universitario</p>
     </footer>
 
-    <script>
-        const formulario = document.getElementById("form-comentarios");
-        const mensaje = document.getElementById("mensaje");
-        const lista = document.getElementById("lista-comentarios");
+   
+<script>
+    const formulario = document.getElementById("form-comentarios");
+    const mensaje = document.getElementById("mensaje");
+    const lista = document.getElementById("lista-comentarios");
 
-        formulario.addEventListener("submit", function(evento) {
-            evento.preventDefault();
+    // Recuperar los comentarios guardados
+    let comentarios = JSON.parse(
+        localStorage.getItem("nexusComentarios") || "[]"
+    );
 
-            const texto = mensaje.value.trim();
+    function mostrarComentarios() {
+        lista.innerHTML = "<h3 style='margin-top:25px;'>Comentarios publicados</h3>";
 
-            if (texto === "") {
-                alert("Escribe un comentario antes de publicar.");
-                return;
-            }
-
+        comentarios.forEach(function(texto, indice) {
             const tarjeta = document.createElement("div");
             tarjeta.className = "comentario-publicado";
 
@@ -449,17 +449,43 @@
 
             eliminar.addEventListener("click", function() {
                 if (confirm("¿Deseas eliminar este comentario?")) {
-                    tarjeta.remove();
+                    comentarios.splice(indice, 1);
+                    guardarComentarios();
+                    mostrarComentarios();
                 }
             });
 
             tarjeta.appendChild(contenido);
             tarjeta.appendChild(eliminar);
             lista.appendChild(tarjeta);
-
-            mensaje.value = "";
         });
-    </script>
+    }
+
+    function guardarComentarios() {
+        localStorage.setItem(
+            "nexusComentarios",
+            JSON.stringify(comentarios)
+        );
+    }
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const texto = mensaje.value.trim();
+
+        if (texto === "") {
+            alert("Escribe un comentario antes de publicar.");
+            return;
+        }
+
+        comentarios.push(texto);
+        guardarComentarios();
+        mostrarComentarios();
+        mensaje.value = "";
+    });
+
+    mostrarComentarios();
+</script>
 
 </body>
 </html>
