@@ -1,40 +1,57 @@
-# Nexus Académico
+# NEXUS ACADÉMICO
 
-Plataforma universitaria de exámenes e información académica.
+**Plataforma universitaria de exámenes y recursos académicos.**
 
-## Objetivo
+NEXUS ACADÉMICO es una plataforma diseñada para facilitar el acceso a exámenes universitarios y organizar información académica en un espacio sencillo, moderno y fácil de utilizar.
 
-Crear una plataforma que facilite el acceso a exámenes universitarios en formato PDF y a información relacionada con docentes e ingenieros, mediante una interfaz elegante, organizada y fácil de utilizar.
+##  Objetivo
 
-## Secciones principales
+Desarrollar una plataforma que permita a los estudiantes consultar exámenes universitarios, acceder a materiales de estudio e informarse sobre docentes e ingenieros de las áreas de Matemática, Física y Química.
 
-### 1. Exámenes de C.B.
-- **MAT:** MAT 1, MAT 2 y MAT 3.
-- **FIS:** FIS 1, FIS 2 y FIS 3.
-- **QMC:** QMC Orgánica (QMC ORG.) y QMC Inorgánica (QMC INORG.).
+##  Secciones principales
+
+### 1. Exámenes de C.B. (Ciclo Básico)
+
+- **MAT:** Matemática.
+- **FIS:** Física.
+- **QMC:** Química.
 
 ### 2. Exámenes de Auxiliaturas
-- **MAT:** MAT 1, MAT 2 y MAT 3.
-- **FIS:** FIS 1, FIS 2 y FIS 3.
-- **QMC:** QMC Orgánica (QMC ORG.) y QMC Inorgánica (QMC INORG.).
 
-### 3. Información de Ingenieros
-- MAT.
-- FIS.
-- QMC.
+- **MAT:** Materias de Matemática.
+- **FIS:** Materias de Física.
+- **QMC:** Materias de Química.
 
-## Características de la página
+### 3. Información de ingenieros
 
-- Diseño elegante y universitario.
-- Colores azul oscuro y blanco.
-- Acceso organizado a los exámenes en PDF.
-- Opciones para visualizar y descargar documentos.
-- Caja de comentarios en la página principal.
+Espacio destinado a organizar información académica relacionada con las áreas de:
 
-## Tecnologías
+- Matemática (MAT).
+- Física (FIS).
+- Química (QMC).
 
-Por definir durante el desarrollo del proyecto.
+##  Características
 
-## Estado del proyecto
+- Diseño universitario con colores azul oscuro, blanco y detalles dorados.
+- Organización de materias por departamento.
+- Consulta de exámenes y materiales académicos disponibles.
+- Visualización y descarga de exámenes.
+- Acceso organizado a las secciones de C.B. y Auxiliaturas.
+- Posibilidad de incorporar una caja de comentarios en la página principal.
 
-En etapa inicial de planificación y diseño.
+##  Tecnologías
+
+- **HTML5:** estructura de las páginas.
+- **CSS3:** diseño y estilos.
+- **JavaScript:** interacción y navegación.
+- **Git y GitHub:** control de versiones y alojamiento del proyecto mediante GitHub Pages.
+
+##  Estado del proyecto
+
+**En desarrollo.**
+
+La plataforma ya cuenta con páginas para Exámenes de C.B. y Auxiliaturas. Se continúa trabajando en la organización de materias, la incorporación de recursos académicos y el desarrollo de nuevas funcionalidades.
+
+## Propósito
+
+Contribuir al aprendizaje universitario mediante una plataforma accesible, organizada y práctica para consultar recursos académicos.
