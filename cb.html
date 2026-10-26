@@ -57,7 +57,9 @@
             margin-bottom: 30px;
         }
 
-        .presentacion h2 {
+        .presentacion h2,
+        .departamento h2,
+        .examen h3 {
             color: #0b1730;
         }
 
@@ -110,10 +112,6 @@
             display: block;
         }
 
-        .departamento h2 {
-            color: #0b1730;
-        }
-
         .materias {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -140,10 +138,6 @@
             margin: 22px 0;
             border-radius: 12px;
             text-align: center;
-        }
-
-        .examen h3 {
-            color: #0b1730;
         }
 
         .foto-examen {
@@ -271,9 +265,21 @@
     <section id="fis" class="departamento">
         <h2>Departamento de Física</h2>
         <div class="materias">
-            <button onclick="mostrarAviso('FIS 1100')">FIS 1100</button>
-            <button onclick="mostrarAviso('FIS 1102')">FIS 1102</button>
-            <button onclick="mostrarAviso('FIS 1200')">FIS 1200</button>
+            <button onclick="mostrarFisica('1100', 4)">FIS 1100</button>
+            <button onclick="mostrarFisica('1102', 3)">FIS 1102</button>
+            <button onclick="mostrarFisica('1200', 3)">FIS 1200</button>
+        </div>
+    </section>
+
+    <!-- VISOR DE FÍSICA -->
+    <section id="visor-fis" class="departamento">
+        <h2 id="titulo-fis">Exámenes de Física</h2>
+        <div id="imagenes-fis"></div>
+
+        <div class="centrado">
+            <button class="descargar" onclick="volverAFisica()">
+                ← Volver a Física
+            </button>
         </div>
     </section>
 
@@ -292,80 +298,12 @@
         </div>
     </section>
 
-    <!-- LAS 7 IMÁGENES DE QMC 1100 -->
+    <!-- VISOR DE QMC 1100 -->
     <section id="visor-qmc" class="departamento">
         <h2>Química General - QMC 1100</h2>
         <p>Exámenes pasados</p>
 
-        <div class="examen">
-            <h3>Examen 1</h3>
-            <img src="imagenes/qmc-1100-1.jpeg"
-                 alt="Examen 1 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 1.</p>
-            <a href="imagenes/qmc-1100-1.jpeg" download class="descargar">Descargar examen 1</a>
-        </div>
-
-        <div class="examen">
-            <h3>Examen 2</h3>
-            <img src="imagenes/qmc-1100-2.jpeg"
-                 alt="Examen 2 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 2.</p>
-            <a href="imagenes/qmc-1100-2.jpeg" download class="descargar">Descargar examen 2</a>
-        </div>
-
-        <div class="examen">
-            <h3>Examen 3</h3>
-            <img src="imagenes/qmc-1100-3.jpeg"
-                 alt="Examen 3 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 3.</p>
-            <a href="imagenes/qmc-1100-3.jpeg" download class="descargar">Descargar examen 3</a>
-        </div>
-
-        <div class="examen">
-            <h3>Examen 4</h3>
-            <img src="imagenes/qmc-1100-4.jpeg"
-                 alt="Examen 4 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 4.</p>
-            <a href="imagenes/qmc-1100-4.jpeg" download class="descargar">Descargar examen 4</a>
-        </div>
-
-        <div class="examen">
-            <h3>Examen 5</h3>
-            <img src="imagenes/qmc-1100-5.jpeg"
-                 alt="Examen 5 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 5.</p>
-            <a href="imagenes/qmc-1100-5.jpeg" download class="descargar">Descargar examen 5</a>
-        </div>
-
-        <div class="examen">
-            <h3>Examen 6</h3>
-            <img src="imagenes/qmc-1100-6.jpeg"
-                 alt="Examen 6 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 6.</p>
-            <a href="imagenes/qmc-1100-6.jpeg" download class="descargar">Descargar examen 6</a>
-        </div>
-
-        <div class="examen">
-            <h3>Examen 7</h3>
-            <img src="imagenes/qmc-1100-7.jpeg"
-                 alt="Examen 7 de QMC 1100"
-                 class="foto-examen"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <p class="mensaje-error">No se encontró la imagen 7.</p>
-            <a href="imagenes/qmc-1100-7.jpeg" download class="descargar">Descargar examen 7</a>
-        </div>
+        <div id="imagenes-qmc"></div>
 
         <div class="centrado">
             <button class="descargar" onclick="volverAQuimica()">
@@ -401,20 +339,123 @@
         alert('El material de ' + materia + ' estará disponible próximamente.');
     }
 
+    // MOSTRAR EXÁMENES DE FÍSICA
+    function mostrarFisica(curso, cantidad) {
+        ocultarSecciones();
+
+        document.getElementById('visor-fis').classList.add('visible');
+        document.getElementById('titulo-fis').textContent =
+            'Exámenes de FIS ' + curso;
+
+        const contenedor = document.getElementById('imagenes-fis');
+        contenedor.innerHTML = '';
+
+        for (let i = 1; i <= cantidad; i++) {
+            const nombre = 'imagenes/fis-' + curso + '-' + i + '.jpeg';
+
+            const examen = document.createElement('div');
+            examen.className = 'examen';
+
+            const titulo = document.createElement('h3');
+            titulo.textContent = 'Examen ' + i;
+
+            const imagen = document.createElement('img');
+            imagen.src = nombre;
+            imagen.alt = 'Examen ' + i + ' de FIS ' + curso;
+            imagen.className = 'foto-examen';
+
+            const aviso = document.createElement('p');
+            aviso.className = 'mensaje-error';
+            aviso.textContent = 'No se encontró ' + nombre +
+                '. Revisa el nombre y la extensión del archivo.';
+
+            imagen.onerror = function() {
+                imagen.style.display = 'none';
+                aviso.style.display = 'block';
+            };
+
+            const enlace = document.createElement('a');
+            enlace.href = nombre;
+            enlace.download = '';
+            enlace.className = 'descargar';
+            enlace.textContent = 'Descargar examen ' + i;
+
+            examen.appendChild(titulo);
+            examen.appendChild(imagen);
+            examen.appendChild(aviso);
+            examen.appendChild(enlace);
+            contenedor.appendChild(examen);
+        }
+    }
+
+    function volverAFisica() {
+        ocultarSecciones();
+        document.getElementById('fis').classList.add('visible');
+
+        document.querySelectorAll('.boton-departamento').forEach(
+            boton => boton.classList.remove('activo')
+        );
+
+        document.querySelectorAll('.boton-departamento')[1]
+            .classList.add('activo');
+    }
+
+    // MOSTRAR LOS 7 EXÁMENES DE QUÍMICA
     function mostrarExamen() {
         ocultarSecciones();
+
         document.getElementById('visor-qmc').classList.add('visible');
+
+        const contenedor = document.getElementById('imagenes-qmc');
+        contenedor.innerHTML = '';
+
+        for (let i = 1; i <= 7; i++) {
+            const nombre = 'imagenes/qmc-1100-' + i + '.jpeg';
+
+            const examen = document.createElement('div');
+            examen.className = 'examen';
+
+            const titulo = document.createElement('h3');
+            titulo.textContent = 'Examen ' + i;
+
+            const imagen = document.createElement('img');
+            imagen.src = nombre;
+            imagen.alt = 'Examen ' + i + ' de QMC 1100';
+            imagen.className = 'foto-examen';
+
+            const aviso = document.createElement('p');
+            aviso.className = 'mensaje-error';
+            aviso.textContent = 'No se encontró la imagen ' + i + '.';
+
+            imagen.onerror = function() {
+                imagen.style.display = 'none';
+                aviso.style.display = 'block';
+            };
+
+            const enlace = document.createElement('a');
+            enlace.href = nombre;
+            enlace.download = '';
+            enlace.className = 'descargar';
+            enlace.textContent = 'Descargar examen ' + i;
+
+            examen.appendChild(titulo);
+            examen.appendChild(imagen);
+            examen.appendChild(aviso);
+            examen.appendChild(enlace);
+            contenedor.appendChild(examen);
+        }
     }
 
     function volverAQuimica() {
         ocultarSecciones();
         document.getElementById('qmc').classList.add('visible');
 
-        document.querySelectorAll('.boton-departamento').forEach(function(boton) {
-            boton.classList.remove('activo');
-        });
+        document.querySelectorAll('.boton-departamento').forEach(
+            boton => boton.classList.remove('activo')
+        );
 
-        document.querySelectorAll('.boton-departamento')[2].classList.add('activo');
+        document.querySelectorAll('.boton-departamento')[2]
+            .classList.add('activo');
     }
 </script>
 
