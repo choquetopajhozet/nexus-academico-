@@ -211,7 +211,7 @@
 </header>
 
 <main>
-    <a href="index.html" class="volver">← Volver al inicio</a>
+    <a href="./index.html" class="volver">← Volver al inicio</a>
 
     <section class="presentacion">
         <h2>Exámenes de C.B.</h2>
@@ -239,25 +239,40 @@
         </button>
     </div>
 
-   
-<!-- MATEMÁTICA -->
-<section id="mat" class="departamento">
-    <h2>Departamento de Matemática</h2>
-    <div class="materias">
-        <button onclick="mostrarAviso('MAT 1100')">MAT 1100</button>
-        <button onclick="mostrarAviso('MAT 1101')">MAT 1101</button>
-        <button onclick="mostrarAviso('MAT 1102')">MAT 1102</button>
-        <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
-        <button onclick="mostrarAviso('MAT 1105')">MAT 1105</button>
-        <button onclick="mostrarAviso('MAT 1207')">MAT 1207</button>
-        <button onclick="mostrarAviso('MAT 1135')">MAT 1135</button>
-        <button onclick="mostrarAviso('MAT 1437')">MAT 1437</button>
-    </div>
-</section>
+    <!-- MATEMÁTICA -->
+    <section id="mat" class="departamento">
+        <h2>Departamento de Matemática</h2>
+
+        <div class="materias">
+            <button onclick="mostrarAviso('MAT 1100')">MAT 1100</button>
+            <button onclick="mostrarMat1101()">MAT 1101</button>
+            <button onclick="mostrarAviso('MAT 1102')">MAT 1102</button>
+            <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
+            <button onclick="mostrarAviso('MAT 1105')">MAT 1105</button>
+            <button onclick="mostrarAviso('MAT 1207')">MAT 1207</button>
+            <button onclick="mostrarAviso('MAT 1135')">MAT 1135</button>
+            <button onclick="mostrarAviso('MAT 1437')">MAT 1437</button>
+        </div>
+    </section>
+
+    <!-- VISOR DE MAT 1101 -->
+    <section id="visor-mat-1101" class="departamento">
+        <h2>Exámenes de MAT 1101</h2>
+        <p>Consulta y descarga los exámenes disponibles.</p>
+
+        <div id="imagenes-mat-1101"></div>
+
+        <div class="centrado">
+            <button class="descargar" onclick="volverAMatematica()">
+                ← Volver a Matemática
+            </button>
+        </div>
+    </section>
 
     <!-- FÍSICA -->
     <section id="fis" class="departamento">
         <h2>Departamento de Física</h2>
+
         <div class="materias">
             <button onclick="mostrarFisica('1100', 4)">FIS 1100</button>
             <button onclick="mostrarFisica('1102', 3)">FIS 1102</button>
@@ -277,14 +292,14 @@
         </div>
     </section>
 
-    
-<!-- QUÍMICA -->
-<section id="qmc" class="departamento">
-    <h2>Departamento de Química</h2>
-    <div class="materias">
-        <button onclick="mostrarExamen()">QMC 1100</button>
-    </div>
-</section>
+    <!-- QUÍMICA -->
+    <section id="qmc" class="departamento">
+        <h2>Departamento de Química</h2>
+
+        <div class="materias">
+            <button onclick="mostrarExamen()">QMC 1100</button>
+        </div>
+    </section>
 
     <!-- VISOR DE QMC 1100 -->
     <section id="visor-qmc" class="departamento">
@@ -306,12 +321,14 @@
 </footer>
 
 <script>
+    // OCULTAR TODOS LOS PANELES
     function ocultarSecciones() {
         document.querySelectorAll('.departamento').forEach(function(seccion) {
             seccion.classList.remove('visible');
         });
     }
 
+    // MOSTRAR UN DEPARTAMENTO
     function mostrarDepartamento(id, boton) {
         ocultarSecciones();
 
@@ -323,13 +340,104 @@
         boton.classList.add('activo');
     }
 
+    // AVISO PARA MATERIAS SIN MATERIAL
     function mostrarAviso(materia) {
         alert('El material de ' + materia + ' estará disponible próximamente.');
     }
 
-    // MOSTRAR EXÁMENES DE FÍSICA
+    // MAT 1101: MOSTRAR LAS 9 FOTOS
+    function mostrarMat1101() {
+        ocultarSecciones();
+
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
+
+        document.getElementById('visor-mat-1101').classList.add('visible');
+
+        const contenedor = document.getElementById('imagenes-mat-1101');
+        contenedor.innerHTML = '';
+
+        for (let i = 1; i <= 9; i++) {
+            const examen = document.createElement('div');
+            examen.className = 'examen';
+
+            const titulo = document.createElement('h3');
+            titulo.textContent = 'Examen ' + i;
+
+            const imagen = document.createElement('img');
+            imagen.alt = 'Examen ' + i + ' de MAT 1101';
+            imagen.className = 'foto-examen';
+
+            const aviso = document.createElement('p');
+            aviso.className = 'mensaje-error';
+            aviso.textContent =
+                'No se encontró la foto ' + i +
+                '. Comprueba su nombre y extensión dentro de la carpeta imagenes.';
+
+            const enlace = document.createElement('a');
+            enlace.className = 'descargar';
+            enlace.textContent = 'Descargar examen ' + i;
+            enlace.download = 'mat-1101-' + i + '.jpeg';
+
+            // Primero intenta el nombre con espacio.
+            const nombreConEspacio = 'imagenes/mat 1101-' + i + '.jpeg';
+
+            // Si no existe, intenta el nombre con guion.
+            const nombreConGuion = 'imagenes/mat-1101-' + i + '.jpeg';
+
+            imagen.onerror = function() {
+                if (imagen.dataset.intento !== 'guion') {
+                    imagen.dataset.intento = 'guion';
+                    imagen.src = nombreConGuion;
+                    enlace.href = nombreConGuion;
+                } else {
+                    imagen.style.display = 'none';
+                    enlace.style.display = 'none';
+                    aviso.style.display = 'block';
+                }
+            };
+
+            imagen.onload = function() {
+                aviso.style.display = 'none';
+                enlace.style.display = 'inline-block';
+            };
+
+            imagen.src = nombreConEspacio;
+            enlace.href = nombreConEspacio;
+
+            examen.appendChild(titulo);
+            examen.appendChild(imagen);
+            examen.appendChild(aviso);
+            examen.appendChild(enlace);
+
+            contenedor.appendChild(examen);
+        }
+    }
+
+    function volverAMatematica() {
+        ocultarSecciones();
+
+        document.getElementById('mat').classList.add('visible');
+
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
+    }
+
+    // FÍSICA
     function mostrarFisica(curso, cantidad) {
         ocultarSecciones();
+
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[1].classList.add('activo');
 
         document.getElementById('visor-fis').classList.add('visible');
         document.getElementById('titulo-fis').textContent =
@@ -372,25 +480,32 @@
             examen.appendChild(imagen);
             examen.appendChild(aviso);
             examen.appendChild(enlace);
+
             contenedor.appendChild(examen);
         }
     }
 
     function volverAFisica() {
         ocultarSecciones();
+
         document.getElementById('fis').classList.add('visible');
 
-        document.querySelectorAll('.boton-departamento').forEach(
-            boton => boton.classList.remove('activo')
-        );
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
 
-        document.querySelectorAll('.boton-departamento')[1]
-            .classList.add('activo');
+        document.querySelectorAll('.boton-departamento')[1].classList.add('activo');
     }
 
-    // MOSTRAR LOS 7 EXÁMENES DE QUÍMICA
+    // QUÍMICA: 7 EXÁMENES
     function mostrarExamen() {
         ocultarSecciones();
+
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[2].classList.add('activo');
 
         document.getElementById('visor-qmc').classList.add('visible');
 
@@ -430,20 +545,21 @@
             examen.appendChild(imagen);
             examen.appendChild(aviso);
             examen.appendChild(enlace);
+
             contenedor.appendChild(examen);
         }
     }
 
     function volverAQuimica() {
         ocultarSecciones();
+
         document.getElementById('qmc').classList.add('visible');
 
-        document.querySelectorAll('.boton-departamento').forEach(
-            boton => boton.classList.remove('activo')
-        );
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
 
-        document.querySelectorAll('.boton-departamento')[2]
-            .classList.add('activo');
+        document.querySelectorAll('.boton-departamento')[2].classList.add('activo');
     }
 </script>
 
