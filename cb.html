@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -246,7 +247,7 @@
         <div class="materias">
             <button onclick="mostrarAviso('MAT 1100')">MAT 1100</button>
             <button onclick="mostrarMat1101()">MAT 1101</button>
-            <button onclick="mostrarAviso('MAT 1102')">MAT 1102</button>
+            <button onclick="mostrarMat1102()">MAT 1102</button>
             <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
             <button onclick="mostrarAviso('MAT 1105')">MAT 1105</button>
             <button onclick="mostrarAviso('MAT 1207')">MAT 1207</button>
@@ -261,6 +262,20 @@
         <p>Consulta y descarga los exámenes disponibles.</p>
 
         <div id="imagenes-mat-1101"></div>
+
+        <div class="centrado">
+            <button class="descargar" onclick="volverAMatematica()">
+                ← Volver a Matemática
+            </button>
+        </div>
+    </section>
+
+    <!-- VISOR DE MAT 1102 -->
+    <section id="visor-mat-1102" class="departamento">
+        <h2>Exámenes de MAT 1102</h2>
+        <p>Consulta y descarga los 6 exámenes disponibles.</p>
+
+        <div id="imagenes-mat-1102"></div>
 
         <div class="centrado">
             <button class="descargar" onclick="volverAMatematica()">
@@ -382,10 +397,7 @@
             enlace.textContent = 'Descargar examen ' + i;
             enlace.download = 'mat-1101-' + i + '.jpeg';
 
-            // Primero intenta el nombre con espacio.
             const nombreConEspacio = 'imagenes/mat 1101-' + i + '.jpeg';
-
-            // Si no existe, intenta el nombre con guion.
             const nombreConGuion = 'imagenes/mat-1101-' + i + '.jpeg';
 
             imagen.onerror = function() {
@@ -417,6 +429,74 @@
         }
     }
 
+    // MAT 1102: MOSTRAR LAS 6 FOTOS
+    function mostrarMat1102() {
+        ocultarSecciones();
+
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
+        document.getElementById('visor-mat-1102').classList.add('visible');
+
+        const contenedor = document.getElementById('imagenes-mat-1102');
+        contenedor.innerHTML = '';
+
+        for (let i = 1; i <= 6; i++) {
+            const examen = document.createElement('div');
+            examen.className = 'examen';
+
+            const titulo = document.createElement('h3');
+            titulo.textContent = 'Examen ' + i;
+
+            const imagen = document.createElement('img');
+            imagen.alt = 'Examen ' + i + ' de MAT 1102';
+            imagen.className = 'foto-examen';
+
+            const aviso = document.createElement('p');
+            aviso.className = 'mensaje-error';
+            aviso.textContent = 'No se encontró la foto ' + i +
+                '. Comprueba su nombre y extensión dentro de la carpeta imagenes.';
+
+            const enlace = document.createElement('a');
+            enlace.className = 'descargar';
+            enlace.textContent = 'Descargar examen ' + i;
+            enlace.download = 'mat-1102-' + i + '.jpeg';
+
+            const nombreConEspacio = 'imagenes/mat 1102-' + i + '.jpeg';
+            const nombreConGuion = 'imagenes/mat-1102-' + i + '.jpeg';
+
+            imagen.onerror = function() {
+                if (imagen.dataset.intento !== 'guion') {
+                    imagen.dataset.intento = 'guion';
+                    imagen.src = nombreConGuion;
+                    enlace.href = nombreConGuion;
+                } else {
+                    imagen.style.display = 'none';
+                    enlace.style.display = 'none';
+                    aviso.style.display = 'block';
+                }
+            };
+
+            imagen.onload = function() {
+                aviso.style.display = 'none';
+                enlace.style.display = 'inline-block';
+            };
+
+            imagen.src = nombreConEspacio;
+            enlace.href = nombreConEspacio;
+
+            examen.appendChild(titulo);
+            examen.appendChild(imagen);
+            examen.appendChild(aviso);
+            examen.appendChild(enlace);
+
+            contenedor.appendChild(examen);
+        }
+    }
+
+    // VOLVER A MATEMÁTICA
     function volverAMatematica() {
         ocultarSecciones();
 
