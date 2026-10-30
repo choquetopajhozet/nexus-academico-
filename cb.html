@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -245,6 +244,7 @@
         <h2>Departamento de Matemática</h2>
 
         <div class="materias">
+            <button onclick="mostrarMat1100()">MAT 1100</button>
             <button onclick="mostrarMat1101()">MAT 1101</button>
             <button onclick="mostrarMat1102()">MAT 1102</button>
             <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
@@ -252,6 +252,20 @@
             <button onclick="mostrarAviso('MAT 1207')">MAT 1207</button>
             <button onclick="mostrarAviso('MAT 1135')">MAT 1135</button>
             <button onclick="mostrarAviso('MAT 1437')">MAT 1437</button>
+        </div>
+    </section>
+
+    <!-- VISOR DE MAT 1100 -->
+    <section id="visor-mat-1100" class="departamento">
+        <h2>Exámenes de MAT 1100</h2>
+        <p>Consulta y descarga los 13 exámenes disponibles.</p>
+
+        <div id="imagenes-mat-1100"></div>
+
+        <div class="centrado">
+            <button class="descargar" onclick="volverAMatematica()">
+                ← Volver a Matemática
+            </button>
         </div>
     </section>
 
@@ -357,6 +371,73 @@
     // AVISO PARA MATERIAS SIN MATERIAL
     function mostrarAviso(materia) {
         alert('El material de ' + materia + ' estará disponible próximamente.');
+    }
+
+    // MAT 1100: MOSTRAR LAS 13 FOTOS
+    function mostrarMat1100() {
+        ocultarSecciones();
+
+        document.querySelectorAll('.boton-departamento').forEach(function(b) {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
+        document.getElementById('visor-mat-1100').classList.add('visible');
+
+        const contenedor = document.getElementById('imagenes-mat-1100');
+        contenedor.innerHTML = '';
+
+        for (let i = 1; i <= 13; i++) {
+            const examen = document.createElement('div');
+            examen.className = 'examen';
+
+            const titulo = document.createElement('h3');
+            titulo.textContent = 'Examen ' + i;
+
+            const imagen = document.createElement('img');
+            imagen.alt = 'Examen ' + i + ' de MAT 1100';
+            imagen.className = 'foto-examen';
+
+            const aviso = document.createElement('p');
+            aviso.className = 'mensaje-error';
+            aviso.textContent = 'No se encontró la foto ' + i +
+                '. Comprueba su nombre y extensión dentro de la carpeta imagenes.';
+
+            const enlace = document.createElement('a');
+            enlace.className = 'descargar';
+            enlace.textContent = 'Descargar examen ' + i;
+            enlace.download = 'mat-1100-' + i + '.jpeg';
+
+            const nombreConEspacio = 'imagenes/mat 1100-' + i + '.jpeg';
+            const nombreConGuion = 'imagenes/mat-1100-' + i + '.jpeg';
+
+            imagen.onerror = function() {
+                if (imagen.dataset.intento !== 'guion') {
+                    imagen.dataset.intento = 'guion';
+                    imagen.src = nombreConGuion;
+                    enlace.href = nombreConGuion;
+                } else {
+                    imagen.style.display = 'none';
+                    enlace.style.display = 'none';
+                    aviso.style.display = 'block';
+                }
+            };
+
+            imagen.onload = function() {
+                aviso.style.display = 'none';
+                enlace.style.display = 'inline-block';
+            };
+
+            imagen.src = nombreConEspacio;
+            enlace.href = nombreConEspacio;
+
+            examen.appendChild(titulo);
+            examen.appendChild(imagen);
+            examen.appendChild(aviso);
+            examen.appendChild(enlace);
+
+            contenedor.appendChild(examen);
+        }
     }
 
     // MAT 1101: MOSTRAR LAS 9 FOTOS
@@ -644,3 +725,4 @@
 
 </body>
 </html>
+
