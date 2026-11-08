@@ -347,160 +347,106 @@
 <footer>
     <p>© 2026 Nexus Académico | Proyecto universitario</p>
 </footer>
-
 <script>
     // OCULTAR TODOS LOS PANELES
     function ocultarSecciones() {
-        document.querySelectorAll('.departamento').forEach(function(seccion) {
+        document.querySelectorAll('.departamento').forEach(seccion => {
             seccion.classList.remove('visible');
         });
     }
 
-    // MOSTRAR UN DEPARTAMENTO
+    // ACTIVAR DEPARTAMENTO
+    function activarBoton(indice) {
+        document.querySelectorAll('.boton-departamento').forEach(b => {
+            b.classList.remove('activo');
+        });
+
+        document.querySelectorAll('.boton-departamento')[indice]
+            .classList.add('activo');
+    }
+
     function mostrarDepartamento(id, boton) {
         ocultarSecciones();
-
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
+        activarBoton(
+            Array.from(document.querySelectorAll('.boton-departamento'))
+                .indexOf(boton)
+        );
 
         document.getElementById(id).classList.add('visible');
-        boton.classList.add('activo');
     }
 
-    // AVISO PARA MATERIAS SIN MATERIAL
+    // MATERIAS SIN EXÁMENES
     function mostrarAviso(materia) {
-        alert('El material de ' + materia + ' estará disponible próximamente.');
+        alert('El material de ' + materia +
+            ' estará disponible próximamente.');
     }
 
-    // MAT 1100: MOSTRAR LAS 13 FOTOS
-    function mostrarMat1100() {
+    // VISOR GENERAL DE IMÁGENES
+    function mostrarImagenes(curso, cantidad, contenedorId, titulo) {
         ocultarSecciones();
 
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
+        const contenedor = document.getElementById(contenedorId);
+        const visor = contenedor.closest('.departamento');
 
-        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
-        document.getElementById('visor-mat-1100').classList.add('visible');
-
-        const contenedor = document.getElementById('imagenes-mat-1100');
+        visor.classList.add('visible');
         contenedor.innerHTML = '';
 
-        for (let i = 1; i <= 13; i++) {
+        for (let i = 1; i <= cantidad; i++) {
             const examen = document.createElement('div');
             examen.className = 'examen';
 
-            const titulo = document.createElement('h3');
-            titulo.textContent = 'Examen ' + i;
+            const encabezado = document.createElement('h3');
+            encabezado.textContent = 'Examen ' + i;
 
             const imagen = document.createElement('img');
-            imagen.alt = 'Examen ' + i + ' de MAT 1100';
             imagen.className = 'foto-examen';
-
-            const aviso = document.createElement('p');
-            aviso.className = 'mensaje-error';
-            aviso.textContent = 'No se encontró la foto ' + i +
-                '. Comprueba su nombre y extensión dentro de la carpeta imagenes.';
-
-            const enlace = document.createElement('a');
-            enlace.className = 'descargar';
-            enlace.textContent = 'Descargar examen ' + i;
-            enlace.download = 'mat-1100-' + i + '.jpeg';
-
-            const nombreConEspacio = 'imagenes/mat 1100-' + i + '.jpeg';
-            const nombreConGuion = 'imagenes/mat-1100-' + i + '.jpeg';
-
-            imagen.onerror = function() {
-                if (imagen.dataset.intento !== 'guion') {
-                    imagen.dataset.intento = 'guion';
-                    imagen.src = nombreConGuion;
-                    enlace.href = nombreConGuion;
-                } else {
-                    imagen.style.display = 'none';
-                    enlace.style.display = 'none';
-                    aviso.style.display = 'block';
-                }
-            };
-
-            imagen.onload = function() {
-                aviso.style.display = 'none';
-                enlace.style.display = 'inline-block';
-            };
-
-            imagen.src = nombreConEspacio;
-            enlace.href = nombreConEspacio;
-
-            examen.appendChild(titulo);
-            examen.appendChild(imagen);
-            examen.appendChild(aviso);
-            examen.appendChild(enlace);
-
-            contenedor.appendChild(examen);
-        }
-    }
-
-    // MAT 1101: MOSTRAR LAS 9 FOTOS
-    function mostrarMat1101() {
-        ocultarSecciones();
-
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
-
-        document.getElementById('visor-mat-1101').classList.add('visible');
-
-        const contenedor = document.getElementById('imagenes-mat-1101');
-        contenedor.innerHTML = '';
-
-        for (let i = 1; i <= 9; i++) {
-            const examen = document.createElement('div');
-            examen.className = 'examen';
-
-            const titulo = document.createElement('h3');
-            titulo.textContent = 'Examen ' + i;
-
-            const imagen = document.createElement('img');
-            imagen.alt = 'Examen ' + i + ' de MAT 1101';
-            imagen.className = 'foto-examen';
+            imagen.alt = titulo + ' - Examen ' + i;
 
             const aviso = document.createElement('p');
             aviso.className = 'mensaje-error';
             aviso.textContent =
-                'No se encontró la foto ' + i +
-                '. Comprueba su nombre y extensión dentro de la carpeta imagenes.';
+                'No se encontró la imagen. Comprueba el nombre del archivo.';
 
             const enlace = document.createElement('a');
             enlace.className = 'descargar';
             enlace.textContent = 'Descargar examen ' + i;
-            enlace.download = 'mat-1101-' + i + '.jpeg';
 
-            const nombreConEspacio = 'imagenes/mat 1101-' + i + '.jpeg';
-            const nombreConGuion = 'imagenes/mat-1101-' + i + '.jpeg';
+            // Probar nombres con espacio, guion y extensiones
+            const nombres = [
+                'imagenes/' + curso + ' ' + i + '.jpeg',
+                'imagenes/' + curso + '-' + i + '.jpeg',
+                'imagenes/' + curso + ' ' + i + '.jpg',
+                'imagenes/' + curso + '-' + i + '.jpg',
+                'imagenes/' + curso + ' ' + i + '.png',
+                'imagenes/' + curso + '-' + i + '.png'
+            ];
 
-            imagen.onerror = function() {
-                if (imagen.dataset.intento !== 'guion') {
-                    imagen.dataset.intento = 'guion';
-                    imagen.src = nombreConGuion;
-                    enlace.href = nombreConGuion;
-                } else {
+            let intento = 0;
+
+            function probarImagen() {
+                if (intento >= nombres.length) {
                     imagen.style.display = 'none';
                     enlace.style.display = 'none';
                     aviso.style.display = 'block';
+                    return;
                 }
-            };
+
+                imagen.src = nombres[intento];
+                enlace.href = nombres[intento];
+                intento++;
+            }
 
             imagen.onload = function() {
                 aviso.style.display = 'none';
+                imagen.style.display = 'block';
                 enlace.style.display = 'inline-block';
             };
 
-            imagen.src = nombreConEspacio;
-            enlace.href = nombreConEspacio;
+            imagen.onerror = probarImagen;
 
-            examen.appendChild(titulo);
+            probarImagen();
+
+            examen.appendChild(encabezado);
             examen.appendChild(imagen);
             examen.appendChild(aviso);
             examen.appendChild(enlace);
@@ -509,220 +455,81 @@
         }
     }
 
-    // MAT 1102: MOSTRAR LAS 6 FOTOS
+    // MATEMÁTICA
+    function mostrarMat1100() {
+        activarBoton(0);
+        mostrarImagenes(
+            'mat-1100', 13,
+            'imagenes-mat-1100',
+            'MAT 1100'
+        );
+    }
+
+    function mostrarMat1101() {
+        activarBoton(0);
+        mostrarImagenes(
+            'mat-1101', 9,
+            'imagenes-mat-1101',
+            'MAT 1101'
+        );
+    }
+
     function mostrarMat1102() {
-        ocultarSecciones();
-
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
-        document.getElementById('visor-mat-1102').classList.add('visible');
-
-        const contenedor = document.getElementById('imagenes-mat-1102');
-        contenedor.innerHTML = '';
-
-        for (let i = 1; i <= 6; i++) {
-            const examen = document.createElement('div');
-            examen.className = 'examen';
-
-            const titulo = document.createElement('h3');
-            titulo.textContent = 'Examen ' + i;
-
-            const imagen = document.createElement('img');
-            imagen.alt = 'Examen ' + i + ' de MAT 1102';
-            imagen.className = 'foto-examen';
-
-            const aviso = document.createElement('p');
-            aviso.className = 'mensaje-error';
-            aviso.textContent = 'No se encontró la foto ' + i +
-                '. Comprueba su nombre y extensión dentro de la carpeta imagenes.';
-
-            const enlace = document.createElement('a');
-            enlace.className = 'descargar';
-            enlace.textContent = 'Descargar examen ' + i;
-            enlace.download = 'mat-1102-' + i + '.jpeg';
-
-            const nombreConEspacio = 'imagenes/mat 1102-' + i + '.jpeg';
-            const nombreConGuion = 'imagenes/mat-1102-' + i + '.jpeg';
-
-            imagen.onerror = function() {
-                if (imagen.dataset.intento !== 'guion') {
-                    imagen.dataset.intento = 'guion';
-                    imagen.src = nombreConGuion;
-                    enlace.href = nombreConGuion;
-                } else {
-                    imagen.style.display = 'none';
-                    enlace.style.display = 'none';
-                    aviso.style.display = 'block';
-                }
-            };
-
-            imagen.onload = function() {
-                aviso.style.display = 'none';
-                enlace.style.display = 'inline-block';
-            };
-
-            imagen.src = nombreConEspacio;
-            enlace.href = nombreConEspacio;
-
-            examen.appendChild(titulo);
-            examen.appendChild(imagen);
-            examen.appendChild(aviso);
-            examen.appendChild(enlace);
-
-            contenedor.appendChild(examen);
-        }
+        activarBoton(0);
+        mostrarImagenes(
+            'mat-1102', 6,
+            'imagenes-mat-1102',
+            'MAT 1102'
+        );
     }
 
-    // VOLVER A MATEMÁTICA
     function volverAMatematica() {
         ocultarSecciones();
-
         document.getElementById('mat').classList.add('visible');
-
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[0].classList.add('activo');
+        activarBoton(0);
     }
 
     // FÍSICA
     function mostrarFisica(curso, cantidad) {
-        ocultarSecciones();
+        activarBoton(1);
 
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[1].classList.add('activo');
-
-        document.getElementById('visor-fis').classList.add('visible');
         document.getElementById('titulo-fis').textContent =
             'Exámenes de FIS ' + curso;
 
-        const contenedor = document.getElementById('imagenes-fis');
-        contenedor.innerHTML = '';
-
-        for (let i = 1; i <= cantidad; i++) {
-            const nombre = 'imagenes/fis-' + curso + '-' + i + '.jpeg';
-
-            const examen = document.createElement('div');
-            examen.className = 'examen';
-
-            const titulo = document.createElement('h3');
-            titulo.textContent = 'Examen ' + i;
-
-            const imagen = document.createElement('img');
-            imagen.src = nombre;
-            imagen.alt = 'Examen ' + i + ' de FIS ' + curso;
-            imagen.className = 'foto-examen';
-
-            const aviso = document.createElement('p');
-            aviso.className = 'mensaje-error';
-            aviso.textContent = 'No se encontró ' + nombre +
-                '. Revisa el nombre y la extensión del archivo.';
-
-            imagen.onerror = function() {
-                imagen.style.display = 'none';
-                aviso.style.display = 'block';
-            };
-
-            const enlace = document.createElement('a');
-            enlace.href = nombre;
-            enlace.download = '';
-            enlace.className = 'descargar';
-            enlace.textContent = 'Descargar examen ' + i;
-
-            examen.appendChild(titulo);
-            examen.appendChild(imagen);
-            examen.appendChild(aviso);
-            examen.appendChild(enlace);
-
-            contenedor.appendChild(examen);
-        }
+        mostrarImagenes(
+            'fis-' + curso,
+            cantidad,
+            'imagenes-fis',
+            'FIS ' + curso
+        );
     }
 
     function volverAFisica() {
         ocultarSecciones();
-
         document.getElementById('fis').classList.add('visible');
-
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[1].classList.add('activo');
+        activarBoton(1);
     }
 
-    // QUÍMICA: 7 EXÁMENES
+    // QUÍMICA
     function mostrarExamen() {
-        ocultarSecciones();
+        activarBoton(2);
 
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[2].classList.add('activo');
-
-        document.getElementById('visor-qmc').classList.add('visible');
-
-        const contenedor = document.getElementById('imagenes-qmc');
-        contenedor.innerHTML = '';
-
-        for (let i = 1; i <= 7; i++) {
-            const nombre = 'imagenes/qmc-1100-' + i + '.jpeg';
-
-            const examen = document.createElement('div');
-            examen.className = 'examen';
-
-            const titulo = document.createElement('h3');
-            titulo.textContent = 'Examen ' + i;
-
-            const imagen = document.createElement('img');
-            imagen.src = nombre;
-            imagen.alt = 'Examen ' + i + ' de QMC 1100';
-            imagen.className = 'foto-examen';
-
-            const aviso = document.createElement('p');
-            aviso.className = 'mensaje-error';
-            aviso.textContent = 'No se encontró la imagen ' + i + '.';
-
-            imagen.onerror = function() {
-                imagen.style.display = 'none';
-                aviso.style.display = 'block';
-            };
-
-            const enlace = document.createElement('a');
-            enlace.href = nombre;
-            enlace.download = '';
-            enlace.className = 'descargar';
-            enlace.textContent = 'Descargar examen ' + i;
-
-            examen.appendChild(titulo);
-            examen.appendChild(imagen);
-            examen.appendChild(aviso);
-            examen.appendChild(enlace);
-
-            contenedor.appendChild(examen);
-        }
+        mostrarImagenes(
+            'qmc-1100',
+            7,
+            'imagenes-qmc',
+            'QMC 1100'
+        );
     }
 
     function volverAQuimica() {
         ocultarSecciones();
-
         document.getElementById('qmc').classList.add('visible');
-
-        document.querySelectorAll('.boton-departamento').forEach(function(b) {
-            b.classList.remove('activo');
-        });
-
-        document.querySelectorAll('.boton-departamento')[2].classList.add('activo');
+        activarBoton(2);
     }
 </script>
 
 </body>
 </html>
+
 
