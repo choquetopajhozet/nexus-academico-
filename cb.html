@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -282,24 +281,21 @@
         <p>Consulta y descarga el documento PDF.</p>
 
         <div class="examen">
-            <iframe
-                src="pdf/mat-1105.pdf"
-                title="PDF de MAT 1105"
-                width="100%"
-                height="700"
-                style="border: 1px solid #dce1e9; border-radius: 8px;">
-            </iframe>
+            <p>
+                El documento está disponible para abrirlo en otra pestaña
+                o descargarlo en tu dispositivo.
+            </p>
 
             <p>
                 <a class="descargar"
-                   href="pdf/mat-1105.pdf"
+                   href="images/mat-1105.pdf"
                    target="_blank"
                    rel="noopener">
                     Abrir PDF de MAT 1105
                 </a>
 
                 <a class="descargar"
-                   href="pdf/mat-1105.pdf"
+                   href="images/mat-1105.pdf"
                    download="mat-1105.pdf">
                     Descargar PDF de MAT 1105
                 </a>
@@ -439,7 +435,7 @@
             enlace.className = 'descargar';
             enlace.textContent = 'Descargar examen ' + i;
 
-            const ruta = 'imagenes/' + curso + '-' + i + '.jpeg';
+            const ruta = 'images/' + curso + '-' + i + '.jpeg';
 
             imagen.onload = function() {
                 aviso.style.display = 'none';
@@ -557,5 +553,4 @@
 
 </body>
 </html>
-
 
