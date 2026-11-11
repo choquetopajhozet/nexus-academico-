@@ -287,19 +287,18 @@
             </p>
 
             <p>
-                <a class="descargar"
-                   href="images/mat-1105.pdf"
-                   target="_blank"
-                   rel="noopener">
-                    Abrir PDF de MAT 1105
-                </a>
+               <a class="descargar"
+   href="./imagenes/mat-1105.pdf"
+   target="_blank"
+   rel="noopener">
+    Abrir PDF de MAT 1105
+</a>
 
-                <a class="descargar"
-                   href="images/mat-1105.pdf"
-                   download="mat-1105.pdf">
-                    Descargar PDF de MAT 1105
-                </a>
-            </p>
+<a class="descargar"
+   href="./imagenes/mat-1105.pdf"
+   download="mat-1105.pdf">
+    Descargar PDF de MAT 1105
+</a>
         </div>
 
         <div class="centrado">
@@ -435,7 +434,7 @@
             enlace.className = 'descargar';
             enlace.textContent = 'Descargar examen ' + i;
 
-            const ruta = 'images/' + curso + '-' + i + '.jpeg';
+            const ruta = './imagenes/' + curso + '-' + i + '.jpeg';
 
             imagen.onload = function() {
                 aviso.style.display = 'none';
