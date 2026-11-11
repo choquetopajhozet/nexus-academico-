@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exámenes de C.B. | Nexus Académico</title>
+    <title>Ciclo Básico | NEXUS ACADÉMICO</title>
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -29,7 +31,9 @@
             letter-spacing: 2px;
         }
 
-        header p { color: #d9e1ef; }
+        header p {
+            color: #d9e1ef;
+        }
 
         main {
             max-width: 1050px;
@@ -103,7 +107,9 @@
             box-shadow: 0 4px 15px #00000012;
         }
 
-        .departamento.visible { display: block; }
+        .departamento.visible {
+            display: block;
+        }
 
         .materias {
             display: grid;
@@ -162,7 +168,9 @@
             color: #0b1730;
         }
 
-        .centrado { text-align: center; }
+        .centrado {
+            text-align: center;
+        }
 
         .mensaje-error {
             display: none;
@@ -179,9 +187,17 @@
         }
 
         @media (max-width: 600px) {
-            header h1 { font-size: 23px; }
-            .departamentos { grid-template-columns: 1fr; }
-            .departamento { padding: 17px; }
+            header h1 {
+                font-size: 23px;
+            }
+
+            .departamentos {
+                grid-template-columns: 1fr;
+            }
+
+            .departamento {
+                padding: 17px;
+            }
         }
     </style>
 </head>
@@ -194,263 +210,277 @@
 </header>
 
 <main>
+
     <a href="./index.html" class="volver">← Volver al inicio</a>
 
     <section class="presentacion">
-        <h2>Exámenes de C.B.</h2>
+        <h2>Exámenes de Ciclo Básico</h2>
         <p>Selecciona un departamento para consultar sus materias y exámenes.</p>
     </section>
 
     <div class="departamentos">
         <button class="boton-departamento"
-                onclick="mostrarDepartamento('mat', this)">
+                onclick="mostrarDepartamento('mat', 0)">
             MAT
             <span>Matemática</span>
         </button>
 
         <button class="boton-departamento"
-                onclick="mostrarDepartamento('fis', this)">
+                onclick="mostrarDepartamento('fis', 1)">
             FIS
             <span>Física</span>
         </button>
 
         <button class="boton-departamento"
-                onclick="mostrarDepartamento('qmc', this)">
+                onclick="mostrarDepartamento('qmc', 2)">
             QMC
             <span>Química</span>
         </button>
     </div>
 
     <!-- MATEMÁTICA -->
+
     <section id="mat" class="departamento">
         <h2>Departamento de Matemática</h2>
 
         <div class="materias">
-            <button onclick="mostrarMat1100()">MAT 1100</button>
-            <button onclick="mostrarMat1101()">MAT 1101</button>
-            <button onclick="mostrarMat1102()">MAT 1102</button>
-            <button onclick="mostrarMat1103()">MAT 1103</button>
-            <button onclick="mostrarMat1105()">MAT 1105</button>
-            <button onclick="mostrarMat1207()">MAT 1207</button>
-            <button onclick="mostrarMat1135()">MAT 1135</button>
-            <button onclick="mostrarMat1437()">MAT 1437</button>
+            <button onclick="mostrarMateria('mat-1100')">MAT 1100</button>
+            <button onclick="mostrarMateria('mat-1101')">MAT 1101</button>
+            <button onclick="mostrarMateria('mat-1102')">MAT 1102</button>
+            <button onclick="mostrarMateria('mat-1103')">MAT 1103</button>
+            <button onclick="mostrarPDF()">MAT 1105</button>
+            <button onclick="mostrarMateria('mat-1207')">MAT 1207</button>
+            <button onclick="mostrarMateria('mat-1135')">MAT 1135</button>
+            <button onclick="mostrarMateria('mat-1437')">MAT 1437</button>
         </div>
     </section>
 
-    <!-- VISORES DE MATEMÁTICA -->
-    <section id="visor-mat-1100" class="departamento">
-        <h2>Exámenes de MAT 1100</h2>
-        <p>Consulta y descarga los 13 exámenes disponibles.</p>
-        <div id="imagenes-mat-1100"></div>
-        <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
-        </div>
-    </section>
+    <!-- VISOR MATEMÁTICA -->
 
-    <section id="visor-mat-1101" class="departamento">
-        <h2>Exámenes de MAT 1101</h2>
+    <section id="visor-mat" class="departamento">
+        <h2 id="titulo-mat">Exámenes de Matemática</h2>
         <p>Consulta y descarga los exámenes disponibles.</p>
-        <div id="imagenes-mat-1101"></div>
+
+        <div id="imagenes-mat"></div>
+
         <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
+            <button class="descargar" onclick="volverDepartamento('mat', 0)">
+                ← Volver a Matemática
+            </button>
         </div>
     </section>
 
-    <section id="visor-mat-1102" class="departamento">
-        <h2>Exámenes de MAT 1102</h2>
-        <p>Consulta y descarga los 6 exámenes disponibles.</p>
-        <div id="imagenes-mat-1102"></div>
-        <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
-        </div>
-    </section>
+    <!-- PDF MAT 1105 -->
 
-    <!-- MAT 1103: DOS IMÁGENES -->
-    <section id="visor-mat-1103" class="departamento">
-        <h2>Exámenes de MAT 1103</h2>
-        <p>Consulta y descarga los exámenes disponibles.</p>
-        <div id="imagenes-mat-1103"></div>
-        <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
-        </div>
-    </section>
-
-    <!-- MAT 1105: PDF -->
-    <section id="visor-mat-1105" class="departamento">
+    <section id="visor-pdf" class="departamento">
         <h2>Material de MAT 1105</h2>
         <p>Consulta y descarga el documento PDF.</p>
 
         <div class="examen">
-            <p>
-                El documento está disponible para abrirlo en otra pestaña
-                o descargarlo en tu dispositivo.
-            </p>
+            <p>Documento de MAT 1105.</p>
 
-            <p>
-               <a class="descargar"
-   href="./imagenes/mat-1105.pdf"
-   target="_blank"
-   rel="noopener">
-    Abrir PDF de MAT 1105
-</a>
+            <a class="descargar"
+               href="./imagenes/mat-1105.pdf"
+               target="_blank"
+               rel="noopener">
+                Abrir PDF de MAT 1105
+            </a>
 
-<a class="descargar"
-   href="./imagenes/mat-1105.pdf"
-   download="mat-1105.pdf">
-    Descargar PDF de MAT 1105
-</a>
+            <a class="descargar"
+               href="./imagenes/mat-1105.pdf"
+               download="mat-1105.pdf">
+                Descargar PDF de MAT 1105
+            </a>
         </div>
 
         <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
-        </div>
-    </section>
-
-    <section id="visor-mat-1207" class="departamento">
-        <h2>Exámenes de MAT 1207</h2>
-        <div id="imagenes-mat-1207"></div>
-        <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
-        </div>
-    </section>
-
-    <section id="visor-mat-1135" class="departamento">
-        <h2>Exámenes de MAT 1135</h2>
-        <div id="imagenes-mat-1135"></div>
-        <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
-        </div>
-    </section>
-
-    <section id="visor-mat-1437" class="departamento">
-        <h2>Exámenes de MAT 1437</h2>
-        <div id="imagenes-mat-1437"></div>
-        <div class="centrado">
-            <button class="descargar" onclick="volverAMatematica()">← Volver a Matemática</button>
+            <button class="descargar" onclick="volverDepartamento('mat', 0)">
+                ← Volver a Matemática
+            </button>
         </div>
     </section>
 
     <!-- FÍSICA -->
+
     <section id="fis" class="departamento">
         <h2>Departamento de Física</h2>
+
         <div class="materias">
-            <button onclick="mostrarFisica('1100', 4)">FIS 1100</button>
-            <button onclick="mostrarFisica('1102', 3)">FIS 1102</button>
-            <button onclick="mostrarFisica('1200', 3)">FIS 1200</button>
+            <button onclick="mostrarMateria('fis-1100')">FIS 1100</button>
+            <button onclick="mostrarMateria('fis-1102')">FIS 1102</button>
+            <button onclick="mostrarMateria('fis-1200')">FIS 1200</button>
         </div>
     </section>
 
     <section id="visor-fis" class="departamento">
         <h2 id="titulo-fis">Exámenes de Física</h2>
+
         <div id="imagenes-fis"></div>
+
         <div class="centrado">
-            <button class="descargar" onclick="volverAFisica()">← Volver a Física</button>
+            <button class="descargar" onclick="volverDepartamento('fis', 1)">
+                ← Volver a Física
+            </button>
         </div>
     </section>
 
     <!-- QUÍMICA -->
+
     <section id="qmc" class="departamento">
         <h2>Departamento de Química</h2>
+
         <div class="materias">
-            <button onclick="mostrarExamen()">QMC 1100</button>
+            <button onclick="mostrarMateria('qmc-1100')">QMC 1100</button>
         </div>
     </section>
 
     <section id="visor-qmc" class="departamento">
         <h2>Química General - QMC 1100</h2>
-        <p>Exámenes pasados</p>
+        <p>Exámenes pasados.</p>
+
         <div id="imagenes-qmc"></div>
+
         <div class="centrado">
-            <button class="descargar" onclick="volverAQuimica()">← Volver a Química</button>
+            <button class="descargar" onclick="volverDepartamento('qmc', 2)">
+                ← Volver a Química
+            </button>
         </div>
     </section>
 
 </main>
 
 <footer>
-    <p>© 2026 Nexus Académico | Proyecto universitario</p>
+    <p>© 2026 NEXUS ACADÉMICO | Proyecto universitario</p>
 </footer>
 
 <script>
 
+    // CANTIDAD DE IMÁGENES DE CADA MATERIA
+    const materias = {
+        "mat-1100": 13,
+        "mat-1101": 9,
+        "mat-1102": 6,
+        "mat-1103": 2,
+        "mat-1207": 4,
+        "mat-1135": 2,
+        "mat-1437": 2,
+
+        "fis-1100": 4,
+        "fis-1102": 3,
+        "fis-1200": 3,
+
+        "qmc-1100": 7
+    };
+
+    // NOMBRES REALES DE LOS ARCHIVOS
+    function obtenerNombreArchivo(curso, numero) {
+
+        if (curso === "mat-1101") {
+            return "mat 1101-" + numero + ".jpeg";
+        }
+
+        return curso + "-" + numero + ".jpeg";
+    }
+
     // OCULTAR TODOS LOS PANELES
     function ocultarSecciones() {
-        document.querySelectorAll('.departamento').forEach(seccion => {
-            seccion.classList.remove('visible');
+        document.querySelectorAll(".departamento").forEach(function(seccion) {
+            seccion.classList.remove("visible");
         });
     }
 
-    // ACTIVAR BOTÓN
+    // ACTIVAR BOTÓN DEL DEPARTAMENTO
     function activarBoton(indice) {
-        document.querySelectorAll('.boton-departamento').forEach(b => {
-            b.classList.remove('activo');
+        document.querySelectorAll(".boton-departamento").forEach(function(boton) {
+            boton.classList.remove("activo");
         });
 
-        document.querySelectorAll('.boton-departamento')[indice]
-            .classList.add('activo');
+        document.querySelectorAll(".boton-departamento")[indice]
+            .classList.add("activo");
     }
 
     // MOSTRAR DEPARTAMENTO
-    function mostrarDepartamento(id, boton) {
+    function mostrarDepartamento(id, indice) {
         ocultarSecciones();
-
-        activarBoton(
-            Array.from(document.querySelectorAll('.boton-departamento'))
-                .indexOf(boton)
-        );
-
-        document.getElementById(id).classList.add('visible');
+        activarBoton(indice);
+        document.getElementById(id).classList.add("visible");
     }
 
-    // VISOR DE IMÁGENES
-    function mostrarImagenes(curso, cantidad, contenedorId, titulo) {
+    // MOSTRAR IMÁGENES DE LOS EXÁMENES
+    function mostrarMateria(curso) {
 
         ocultarSecciones();
 
-        const contenedor = document.getElementById(contenedorId);
-        const visor = contenedor.closest('.departamento');
+        let contenedor;
+        let visor;
+        let titulo;
 
-        visor.classList.add('visible');
-        contenedor.innerHTML = '';
+        if (curso.startsWith("mat-")) {
+            contenedor = document.getElementById("imagenes-mat");
+            visor = document.getElementById("visor-mat");
+            titulo = document.getElementById("titulo-mat");
+            activarBoton(0);
+        } else if (curso.startsWith("fis-")) {
+            contenedor = document.getElementById("imagenes-fis");
+            visor = document.getElementById("visor-fis");
+            titulo = document.getElementById("titulo-fis");
+            activarBoton(1);
+        } else {
+            contenedor = document.getElementById("imagenes-qmc");
+            visor = document.getElementById("visor-qmc");
+            titulo = document.querySelector("#visor-qmc h2");
+            activarBoton(2);
+        }
+
+        visor.classList.add("visible");
+
+        const codigo = curso.toUpperCase().replace("-", " ");
+        titulo.textContent = "Exámenes de " + codigo;
+
+        contenedor.innerHTML = "";
+
+        const cantidad = materias[curso];
 
         for (let i = 1; i <= cantidad; i++) {
 
-            const examen = document.createElement('div');
-            examen.className = 'examen';
+            const examen = document.createElement("div");
+            examen.className = "examen";
 
-            const encabezado = document.createElement('h3');
-            encabezado.textContent = 'Examen ' + i;
+            const encabezado = document.createElement("h3");
+            encabezado.textContent = "Examen " + i;
 
-            const imagen = document.createElement('img');
-            imagen.className = 'foto-examen';
-            imagen.alt = titulo + ' - Examen ' + i;
+            const imagen = document.createElement("img");
+            imagen.className = "foto-examen";
+            imagen.alt = codigo + " - Examen " + i;
 
-            const aviso = document.createElement('p');
-            aviso.className = 'mensaje-error';
+            const aviso = document.createElement("p");
+            aviso.className = "mensaje-error";
             aviso.textContent =
-                'No se encontró la imagen. Comprueba el nombre del archivo.';
+                "No se encontró este archivo. Comprueba que exista en la carpeta imagenes.";
 
-            const enlace = document.createElement('a');
-            enlace.className = 'descargar';
-            enlace.textContent = 'Descargar examen ' + i;
+            const enlace = document.createElement("a");
+            enlace.className = "descargar";
+            enlace.textContent = "Descargar examen " + i;
 
-            const ruta = './imagenes/' + curso + '-' + i + '.jpeg';
+            const nombre = obtenerNombreArchivo(curso, i);
+            const ruta = "./imagenes/" + encodeURIComponent(nombre);
 
             imagen.onload = function() {
-                aviso.style.display = 'none';
-                imagen.style.display = 'block';
-                enlace.style.display = 'inline-block';
+                imagen.style.display = "block";
+                aviso.style.display = "none";
+                enlace.style.display = "inline-block";
             };
 
             imagen.onerror = function() {
-                imagen.style.display = 'none';
-                enlace.style.display = 'none';
-                aviso.style.display = 'block';
+                imagen.style.display = "none";
+                enlace.style.display = "none";
+                aviso.style.display = "block";
             };
 
             imagen.src = ruta;
+
             enlace.href = ruta;
-            enlace.download = curso + '-' + i + '.jpeg';
+            enlace.download = nombre;
 
             examen.appendChild(encabezado);
             examen.appendChild(imagen);
@@ -461,95 +491,21 @@
         }
     }
 
-    // MATEMÁTICA
-    function mostrarMat1100() {
-        activarBoton(0);
-        mostrarImagenes('mat-1100', 13, 'imagenes-mat-1100', 'MAT 1100');
-    }
-
-    function mostrarMat1101() {
-        activarBoton(0);
-        mostrarImagenes('mat-1101', 9, 'imagenes-mat-1101', 'MAT 1101');
-    }
-
-    function mostrarMat1102() {
-        activarBoton(0);
-        mostrarImagenes('mat-1102', 6, 'imagenes-mat-1102', 'MAT 1102');
-    }
-
-    function mostrarMat1103() {
-        activarBoton(0);
-        mostrarImagenes('mat-1103', 2, 'imagenes-mat-1103', 'MAT 1103');
-    }
-
-    function mostrarMat1105() {
+    // MOSTRAR PDF
+    function mostrarPDF() {
         ocultarSecciones();
         activarBoton(0);
-        document.getElementById('visor-mat-1105').classList.add('visible');
+        document.getElementById("visor-pdf").classList.add("visible");
     }
 
-    function mostrarMat1207() {
-        activarBoton(0);
-        mostrarImagenes('mat-1207', 4, 'imagenes-mat-1207', 'MAT 1207');
-    }
-
-    function mostrarMat1135() {
-        activarBoton(0);
-        mostrarImagenes('mat-1135', 2, 'imagenes-mat-1135', 'MAT 1135');
-    }
-
-    function mostrarMat1437() {
-        activarBoton(0);
-        mostrarImagenes('mat-1437', 2, 'imagenes-mat-1437', 'MAT 1437');
-    }
-
-    function volverAMatematica() {
+    // VOLVER AL DEPARTAMENTO
+    function volverDepartamento(id, indice) {
         ocultarSecciones();
-        document.getElementById('mat').classList.add('visible');
-        activarBoton(0);
-    }
-
-    // FÍSICA
-    function mostrarFisica(curso, cantidad) {
-        activarBoton(1);
-
-        document.getElementById('titulo-fis').textContent =
-            'Exámenes de FIS ' + curso;
-
-        mostrarImagenes(
-            'fis-' + curso,
-            cantidad,
-            'imagenes-fis',
-            'FIS ' + curso
-        );
-    }
-
-    function volverAFisica() {
-        ocultarSecciones();
-        document.getElementById('fis').classList.add('visible');
-        activarBoton(1);
-    }
-
-    // QUÍMICA
-    function mostrarExamen() {
-        activarBoton(2);
-
-        mostrarImagenes(
-            'qmc-1100',
-            7,
-            'imagenes-qmc',
-            'QMC 1100'
-        );
-    }
-
-    function volverAQuimica() {
-        ocultarSecciones();
-        document.getElementById('qmc').classList.add('visible');
-        activarBoton(2);
+        activarBoton(indice);
+        document.getElementById(id).classList.add("visible");
     }
 
 </script>
 
 </body>
 </html>
-
