@@ -2,153 +2,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingenieros de Matemática | Nexus Académico</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docentes de Matemática | Nexus Académico</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f3f5fa;
-            color: #263248;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #172033;
+}
 
-        header {
-            background: #172b4d;
-            color: white;
-            padding: 25px 8%;
-        }
+header {
+    background: white;
+    padding: 25px 7%;
+    border-bottom: 1px solid #e5e7eb;
+}
 
-        header a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-        }
+header a {
+    color: #344b80;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-        header h1 {
-            margin-top: 18px;
-            font-size: 27px;
-        }
+header h1 {
+    margin-top: 15px;
+    font-size: 25px;
+    color: #172b4d;
+}
 
-        header p {
-            margin-top: 7px;
-            color: #cbd5e1;
-        }
+header h1 span {
+    color: #4057a5;
+}
 
-        main {
-            width: 90%;
-            max-width: 1050px;
-            margin: 35px auto;
-        }
+header p {
+    color: #697386;
+    margin-top: 6px;
+}
 
-        .encabezado {
-            margin-bottom: 25px;
-        }
+main {
+    max-width: 1200px;
+    width: 92%;
+    margin: 35px auto;
+}
 
-        .encabezado h2 {
-            color: #172b4d;
-            margin-bottom: 8px;
-        }
+.encabezado {
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-        .buscador {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #ccd4e0;
-            border-radius: 9px;
-            font-size: 15px;
-            margin: 20px 0;
-            outline-color: #4267a5;
-        }
+.encabezado h2 {
+    color: #243b68;
+    margin-bottom: 9px;
+}
 
-        .lista-docentes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-        }
+.encabezado p {
+    color: #697386;
+}
 
-        .docente {
-            background: white;
-            border-radius: 12px;
-            padding: 18px;
-            box-shadow: 0 3px 12px rgba(0,0,0,.06);
-            border: 1px solid #e5eaf1;
-        }
+#buscar {
+    display: block;
+    width: 100%;
+    max-width: 550px;
+    margin: 25px auto 30px;
+    padding: 13px 16px;
+    border: 1px solid #d9deea;
+    border-radius: 10px;
+    font-size: 15px;
+    outline-color: #5269c5;
+}
 
-        .docente h3 {
-            font-size: 16px;
-            color: #172b4d;
-            margin-bottom: 12px;
-        }
+.lista-docentes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 20px;
+}
 
-        .numero {
-            color: #5377ad;
-            margin-right: 6px;
-        }
+.tarjeta {
+    background: white;
+    border: 1px solid #e1e5ed;
+    border-radius: 19px;
+    padding: 21px 17px;
+    text-align: center;
+    box-shadow: 0 4px 13px rgba(0,0,0,0.06);
+    min-height: 300px;
+}
 
-        .docente details {
-            border-top: 1px solid #e8edf4;
-            padding-top: 12px;
-        }
+.parte-superior {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    margin-bottom: 17px;
+}
 
-        .docente summary {
-            cursor: pointer;
-            color: #355b91;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.iniciales {
+    width: 49px;
+    height: 49px;
+    min-width: 49px;
+    border-radius: 50%;
+    background: #e1e7ff;
+    color: #303eaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: bold;
+}
 
-        .datos {
-            margin-top: 14px;
-            font-size: 14px;
-            line-height: 1.7;
-        }
+.tarjeta h3 {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #101827;
+}
 
-        .datos p {
-            margin-bottom: 9px;
-        }
+.tarjeta p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
 
-        .datos strong {
-            color: #263d60;
-        }
+.tarjeta strong {
+    color: #25334e;
+}
 
-        .pendiente {
-            color: #777;
-            font-style: italic;
-        }
+.etiqueta {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 7px 12px;
+    background: #fff5ec;
+    color: #b33a20;
+    border-radius: 9px;
+    font-size: 11px;
+}
 
-        .sin-resultados {
-            display: none;
-            text-align: center;
-            padding: 25px;
-            color: #777;
-            grid-column: 1 / -1;
-        }
+.etiqueta.pendiente {
+    background: #f0f2f6;
+    color: #687386;
+}
 
-        footer {
-            background: #172b4d;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 45px;
-            font-size: 13px;
-        }
+.sin-resultados {
+    display: none;
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    grid-column: 1 / -1;
+}
 
-        @media(max-width: 600px) {
-            header {
-                padding: 22px 5%;
-            }
+footer {
+    text-align: center;
+    padding: 22px;
+    margin-top: 40px;
+    background: #172b4d;
+    color: white;
+    font-size: 13px;
+}
 
-            main {
-                width: 92%;
-            }
-        }
-    </style>
+@media(max-width: 600px) {
+    main {
+        width: 90%;
+    }
+
+    .lista-docentes {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -156,521 +181,28 @@
 <header>
     <a href="ingenieros.html">← Volver a materias</a>
     <h1>NEXUS <span>ACADÉMICO</span></h1>
-    <p>Directorio académico de Matemática</p>
+    <p>Directorio académico</p>
 </header>
 
 <main>
 
     <section class="encabezado">
         <h2>Departamento de Matemática (MAT)</h2>
-        <p>Consulta la información académica de los 35 docentes.</p>
+        <p>Información académica de los 35 docentes</p>
     </section>
 
     <input
         type="text"
         id="buscar"
-        class="buscador"
         placeholder="Buscar docente por nombre..."
-        oninput="filtrarDocentes()"
     >
 
-    <section class="lista-docentes" id="listaDocentes">
+    <section class="lista-docentes" id="listaDocentes"></section>
 
-        <article class="docente">
-            <h3><span class="numero">01.</span> Achocalla Tarqui Esteban</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información pendiente.</p>
-                    <p><strong>Evaluaciones:</strong> Por confirmar.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Aún no registrada.</p>
-                </div>
-            </details>
-        </article>
+    <p class="sin-resultados" id="sinResultados">
+        No se encontraron docentes.
+    </p>
 
-        <article class="docente">
-            <h3><span class="numero">02.</span> Aguilar Vera René Arturo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y ejercicios (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Sin datos confirmados.</p>
-                    <p><strong>Evaluaciones:</strong> Pendiente de información.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin distribución registrada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">03.</span> Antezana García René</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios en aula (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Información no disponible.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de registro.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">04.</span> Arancibia Balderrama Jhonny Roger Hanz</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por verificar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información pendiente.</p>
-                    <p><strong>Evaluaciones:</strong> Aún sin registro.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> No publicada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">05.</span> Bazán Astete Carmen Rosario</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendiente de información.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin datos disponibles.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">06.</span> Blanco Benito Armengol</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y resolución de ejercicios (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por confirmar.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de registro.</p>
-                    <p><strong>Parciales:</strong> Por verificar.</p>
-                    <p><strong>Ponderación:</strong> Distribución no disponible.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">07.</span> Challapa Chura Climan</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> No se cuenta con información.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Pendiente.</p>
-                    <p><strong>Ponderación:</strong> Aún no especificada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">08.</span> Chura Miranda Carlos Raúl</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios y explicación teórica (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Información pendiente.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin registro confirmado.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">09.</span> Colque Alconce Adolfo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendientes de consulta.</p>
-                    <p><strong>Evaluaciones:</strong> Sin información registrada.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de publicación.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">10.</span> Copa Cruz Jorge Larry</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y práctica (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información por recopilar.</p>
-                    <p><strong>Evaluaciones:</strong> Por confirmar.</p>
-                    <p><strong>Parciales:</strong> Pendiente de información.</p>
-                    <p><strong>Ponderación:</strong> Aún no registrada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">11.</span> Cornejo Ramos Javier Milton</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por verificar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Sin datos confirmados.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de consulta.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> No disponible por el momento.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">12.</span> Escalante Lunario Marco Antonio</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios en clase (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por confirmar.</p>
-                    <p><strong>Evaluaciones:</strong> Aún no especificadas.</p>
-                    <p><strong>Parciales:</strong> Por verificar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de información.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">13.</span> García Ocaña Néstor Dennis</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información no registrada.</p>
-                    <p><strong>Evaluaciones:</strong> Pendiente de consulta.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin datos publicados.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">14.</span> Guzmán García Alex David</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y ejercicios (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendiente de información.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Sin confirmar.</p>
-                    <p><strong>Ponderación:</strong> Aún no definida en el directorio.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">15.</span> Herrera Dalence Germán Wilfredo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Sin información disponible.</p>
-                    <p><strong>Parciales:</strong> Pendiente.</p>
-                    <p><strong>Ponderación:</strong> No registrada todavía.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">16.</span> Ilaya Ayza Amilkar Ernesto</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por verificar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendientes de consulta.</p>
-                    <p><strong>Evaluaciones:</strong> Por confirmar.</p>
-                    <p><strong>Parciales:</strong> Aún sin información.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de registro.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">17.</span> Ismael Rojas David Emilio</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Pendiente de información.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> No especificada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">18.</span> Jemio Ortuño Carlos Marcos</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios y teoría (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información pendiente.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Sin confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin distribución registrada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">19.</span> Loza Barriga Gustavo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> No especificados.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de consulta.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Aún no disponible.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">20.</span> Mamani Guaygua Julio</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y resolución de ejercicios (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por confirmar.</p>
-                    <p><strong>Evaluaciones:</strong> Información pendiente.</p>
-                    <p><strong>Parciales:</strong> Por verificar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de publicación.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">21.</span> Medinaceli Ortiz Rubén</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendiente de datos.</p>
-                    <p><strong>Evaluaciones:</strong> No se cuenta con registro.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin información confirmada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">22.</span> Mendoza Vargas Juan</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios en aula (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de información.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> No publicada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">23.</span> Mercado Espinoza Leonardo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por verificar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información pendiente.</p>
-                    <p><strong>Evaluaciones:</strong> Por confirmar.</p>
-                    <p><strong>Parciales:</strong> Aún sin datos.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de consulta.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">24.</span> Morales Gutiérrez Jorge Iván</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y práctica (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por confirmar.</p>
-                    <p><strong>Evaluaciones:</strong> Sin información registrada.</p>
-                    <p><strong>Parciales:</strong> Por verificar.</p>
-                    <p><strong>Ponderación:</strong> Aún no especificada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">25.</span> Morando Guzmán Pamela Moramay</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendientes de consulta.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Información pendiente.</p>
-                    <p><strong>Ponderación:</strong> No disponible actualmente.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">26.</span> Ríos Herrera Víctor</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios y explicación teórica (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de registro.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Sin datos publicados.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">27.</span> Rivero Veliz Miguel Ángel</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información no disponible.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Pendiente.</p>
-                    <p><strong>Ponderación:</strong> Aún sin registro.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">28.</span> Rodríguez Blacutt Julio César</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y ejercicios (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por confirmar.</p>
-                    <p><strong>Evaluaciones:</strong> Sin datos registrados.</p>
-                    <p><strong>Parciales:</strong> Por verificar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de información.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">29.</span> Rojas Rodríguez José Paulo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendientes de información.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Sin confirmar.</p>
-                    <p><strong>Ponderación:</strong> No registrada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">30.</span> Terán Velásquez Alcides</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios prácticos (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información por recopilar.</p>
-                    <p><strong>Evaluaciones:</strong> Por confirmar.</p>
-                    <p><strong>Parciales:</strong> Pendiente de información.</p>
-                    <p><strong>Ponderación:</strong> Sin distribución confirmada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">31.</span> Urquizo Sandoval Seus Cristian</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por verificar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Aún sin información.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de consulta.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de publicación.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">32.</span> Vargas Oroza José Alfredo</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Teoría y ejercicios (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por verificar.</p>
-                    <p><strong>Evaluaciones:</strong> Información pendiente.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Aún no especificada.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">33.</span> Villanueva Fulguera Franklin Humberto</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Pendientes de registro.</p>
-                    <p><strong>Evaluaciones:</strong> Por verificar.</p>
-                    <p><strong>Parciales:</strong> Sin información confirmada.</p>
-                    <p><strong>Ponderación:</strong> No disponible todavía.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">34.</span> Zambrana Rodríguez Freddy Jhony</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Ejercicios y teoría (por confirmar).</p>
-                    <p><strong>Prácticas y trabajos:</strong> Por confirmar.</p>
-                    <p><strong>Evaluaciones:</strong> Pendientes de información.</p>
-                    <p><strong>Parciales:</strong> Por verificar.</p>
-                    <p><strong>Ponderación:</strong> Sin datos registrados.</p>
-                </div>
-            </details>
-        </article>
-
-        <article class="docente">
-            <h3><span class="numero">35.</span> Zubietа Arce Juan Jaime</h3>
-            <details>
-                <summary>Ver información académica</summary>
-                <div class="datos">
-                    <p><strong>Forma de enseñanza:</strong> Por confirmar.</p>
-                    <p><strong>Prácticas y trabajos:</strong> Información pendiente.</p>
-                    <p><strong>Evaluaciones:</strong> Aún sin registro.</p>
-                    <p><strong>Parciales:</strong> Por confirmar.</p>
-                    <p><strong>Ponderación:</strong> Pendiente de consulta.</p>
-                </div>
-            </details>
-        </article>
-
-        <p class="sin-resultados" id="sinResultados">
-            No se encontraron docentes con ese nombre.
-        </p>
-
-    </section>
 </main>
 
 <footer>
@@ -678,29 +210,248 @@
 </footer>
 
 <script>
-    function filtrarDocentes() {
-        const busqueda = document.getElementById("buscar")
-            .value.toLowerCase().trim();
-
-        const docentes = document.querySelectorAll(".docente");
-        let encontrados = 0;
-
-        docentes.forEach(docente => {
-            const nombre = docente.querySelector("h3")
-                .textContent.toLowerCase();
-
-            if (nombre.includes(busqueda)) {
-                docente.style.display = "";
-                encontrados++;
-            } else {
-                docente.style.display = "none";
-            }
-        });
-
-        document.getElementById("sinResultados").style.display =
-            encontrados === 0 ? "block" : "none";
+const docentes = [
+    {
+        nombre: "Achocalla Tarqui Esteban",
+        ponderacion: "Prácticas 20%, parciales 40% y final 40%",
+        demo: true
+    },
+    {
+        nombre: "Aguilar Vera René Arturo",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Antezana García René",
+        ponderacion: "Trabajos 15%, prácticas 25%, parciales 30% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Arancibia Balderrama Jhonny Roger Hanz",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Bazán Astete Carmen Rosario",
+        ponderacion: "Prácticas 30%, parciales 30% y final 40%",
+        demo: true
+    },
+    {
+        nombre: "Blanco Benito Armengol",
+        ponderacion: "Sin distribución registrada",
+        demo: false
+    },
+    {
+        nombre: "Challapa Chura Climan",
+        ponderacion: "Trabajos 20%, parciales 50% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Chura Miranda Carlos Raúl",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Colque Alconce Adolfo",
+        ponderacion: "Prácticas 25%, parciales 35% y final 40%",
+        demo: true
+    },
+    {
+        nombre: "Copa Cruz Jorge Larry",
+        ponderacion: "Pendiente de información",
+        demo: false
+    },
+    {
+        nombre: "Cornejo Ramos Javier Milton",
+        ponderacion: "Trabajos 10%, prácticas 20%, parciales 40% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Escalante Lunario Marco Antonio",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "García Ocaña Néstor Dennis",
+        ponderacion: "Prácticas 20%, parciales 50% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Guzmán García Alex David",
+        ponderacion: "Sin información disponible",
+        demo: false
+    },
+    {
+        nombre: "Herrera Dalence Germán Wilfredo",
+        ponderacion: "Trabajos 25%, parciales 35% y final 40%",
+        demo: true
+    },
+    {
+        nombre: "Ilaya Ayza Amilkar Ernesto",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Ismael Rojas David Emilio",
+        ponderacion: "Prácticas 15%, parciales 45% y final 40%",
+        demo: true
+    },
+    {
+        nombre: "Jemio Ortuño Carlos Marcos",
+        ponderacion: "Pendiente de registro",
+        demo: false
+    },
+    {
+        nombre: "Loza Barriga Gustavo",
+        ponderacion: "Trabajos 20%, prácticas 30%, parciales 20% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Mamani Guaygua Julio",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Medinaceli Ortiz Rubén",
+        ponderacion: "Prácticas 25%, parciales 40% y final 35%",
+        demo: true
+    },
+    {
+        nombre: "Mendoza Vargas Juan",
+        ponderacion: "Sin datos registrados",
+        demo: false
+    },
+    {
+        nombre: "Mercado Espinoza Leonardo",
+        ponderacion: "Trabajos 15%, prácticas 25%, parciales 40% y final 20%",
+        demo: true
+    },
+    {
+        nombre: "Morales Gutiérrez Jorge Iván",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Morando Guzmán Pamela Moramay",
+        ponderacion: "Prácticas 20%, parciales 30% y final 50%",
+        demo: true
+    },
+    {
+        nombre: "Ríos Herrera Víctor",
+        ponderacion: "Pendiente de información",
+        demo: false
+    },
+    {
+        nombre: "Rivero Veliz Miguel Ángel",
+        ponderacion: "Trabajos 20%, prácticas 20%, parciales 30% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Rodríguez Blacutt Julio César",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Rojas Rodríguez José Paulo",
+        ponderacion: "Prácticas 30%, parciales 40% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Terán Velásquez Alcides",
+        ponderacion: "Sin información registrada",
+        demo: false
+    },
+    {
+        nombre: "Urquizo Sandoval Seus Cristian",
+        ponderacion: "Trabajos 10%, prácticas 30%, parciales 30% y final 30%",
+        demo: true
+    },
+    {
+        nombre: "Vargas Oroza José Alfredo",
+        ponderacion: "Por confirmar",
+        demo: false
+    },
+    {
+        nombre: "Villanueva Fulguera Franklin Humberto",
+        ponderacion: "Prácticas 20%, parciales 40% y final 40%",
+        demo: true
+    },
+    {
+        nombre: "Zambrana Rodríguez Freddy Jhony",
+        ponderacion: "Pendiente de información",
+        demo: false
+    },
+    {
+        nombre: "Zubieta Arce Juan Jaime",
+        ponderacion: "Por confirmar",
+        demo: false
     }
+];
+
+function obtenerIniciales(nombre) {
+    const palabras = nombre.split(" ");
+    return palabras[0][0] + palabras[1][0];
+}
+
+function mostrarDocentes(lista) {
+    const contenedor = document.getElementById("listaDocentes");
+    const sinResultados = document.getElementById("sinResultados");
+
+    contenedor.innerHTML = "";
+
+    lista.forEach(docente => {
+        const iniciales = obtenerIniciales(docente.nombre);
+
+        const etiqueta = docente.demo
+            ? '<span class="etiqueta">Datos de demostración</span>'
+            : '<span class="etiqueta pendiente">Información pendiente</span>';
+
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "tarjeta";
+
+        tarjeta.innerHTML = `
+            <div class="parte-superior">
+                <div class="iniciales">${iniciales}</div>
+                <h3>${docente.nombre}</h3>
+            </div>
+
+            <p><strong>Materia:</strong> Matemática.</p>
+
+            <p><strong>Forma de enseñanza:</strong>
+            Información por confirmar.</p>
+
+            <p><strong>Prácticas:</strong>
+            Pendientes de información.</p>
+
+            <p><strong>Evaluaciones:</strong>
+            Por confirmar.</p>
+
+            <p><strong>Ponderaciones:</strong>
+            ${docente.ponderacion}.</p>
+
+            ${etiqueta}
+        `;
+
+        contenedor.appendChild(tarjeta);
+    });
+
+    sinResultados.style.display =
+        lista.length === 0 ? "block" : "none";
+}
+
+document.getElementById("buscar").addEventListener("input", function() {
+    const texto = this.value.toLowerCase().trim();
+
+    const filtrados = docentes.filter(docente =>
+        docente.nombre.toLowerCase().includes(texto)
+    );
+
+    mostrarDocentes(filtrados);
+});
+
+mostrarDocentes(docentes);
 </script>
 
 </body>
 </html>
+
