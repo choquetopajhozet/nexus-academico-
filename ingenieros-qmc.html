@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -118,7 +117,8 @@
 
 <main class="seccion">
 
-    <a href="docentes.html" class="volver">
+    <!-- ENLACE CORREGIDO -->
+    <a href="ingenieros.html" class="volver">
         ← Volver a docentes
     </a>
 
@@ -143,7 +143,6 @@
 
     <div class="lista-docentes" id="listaDocentes">
 
-        <!-- DOCENTE 01 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">AT</div>
@@ -159,7 +158,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 02 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">AG</div>
@@ -175,7 +173,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 03 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">ÁM</div>
@@ -191,7 +188,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 04 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">BF</div>
@@ -207,7 +203,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 05 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">CM</div>
@@ -223,7 +218,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 06 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">CA</div>
@@ -239,7 +233,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 07 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">CA</div>
@@ -255,7 +248,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 08 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">CA</div>
@@ -271,7 +263,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 09 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">GC</div>
@@ -287,7 +278,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 10 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">HC</div>
@@ -303,7 +293,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 11 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">HC</div>
@@ -319,7 +308,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 12 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">HI</div>
@@ -335,7 +323,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 13 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">MD</div>
@@ -351,7 +338,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 14 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">PM</div>
@@ -367,7 +353,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 15 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">RT</div>
@@ -383,7 +368,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 16 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">SC</div>
@@ -399,7 +383,6 @@
             <span class="docente-nota">Datos de demostración</span>
         </article>
 
-        <!-- DOCENTE 17 -->
         <article class="docente-card">
             <div class="docente-superior">
                 <div class="docente-icono">TF</div>
@@ -430,11 +413,20 @@
     const contador = document.getElementById("contador");
 
     buscador.addEventListener("input", function() {
-        const texto = this.value.toLowerCase();
+
+        const texto = this.value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
         let encontrados = 0;
 
         tarjetas.forEach(function(tarjeta) {
-            const nombre = tarjeta.querySelector("h3").textContent.toLowerCase();
+
+            const nombre = tarjeta.querySelector("h3").textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
 
             if (nombre.includes(texto)) {
                 tarjeta.style.display = "";
@@ -442,9 +434,11 @@
             } else {
                 tarjeta.style.display = "none";
             }
+
         });
 
         contador.textContent = encontrados + " docentes encontrados";
+
     });
 </script>
 

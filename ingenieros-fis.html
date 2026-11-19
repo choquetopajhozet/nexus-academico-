@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -95,13 +94,18 @@
 <body>
 
 <header class="encabezado">
-    <a href="index.html" class="logo">NEXUS <span>ACADÉMICO</span></a>
+    <a href="index.html" class="logo">
+        NEXUS <span>ACADÉMICO</span>
+    </a>
     <p>Directorio académico</p>
 </header>
 
 <main class="seccion">
 
-    <a href="docentes.html" class="volver">← Volver a materias</a>
+    <!-- ENLACE CORREGIDO -->
+    <a href="ingenieros.html" class="volver">
+        ← Volver a materias
+    </a>
 
     <p class="etiqueta">DIRECTORIO ACADÉMICO</p>
     <h2>Ingenieros de Física</h2>
@@ -316,7 +320,6 @@ const buscador = document.getElementById("buscador");
 const contador = document.getElementById("contador");
 const sinResultados = document.getElementById("sinResultados");
 
-// Crear las tarjetas de los 20 docentes
 docentes.forEach(function(docente) {
 
     const tarjeta = document.createElement("article");
@@ -325,6 +328,7 @@ docentes.forEach(function(docente) {
     let informacion;
 
     if (docente.demo) {
+
         informacion = `
             <p class="dato-docente"><strong>Materia:</strong> ${docente.materia}.</p>
             <p class="dato-docente"><strong>Forma de enseñanza:</strong> ${docente.forma}.</p>
@@ -333,7 +337,9 @@ docentes.forEach(function(docente) {
             <p class="dato-docente"><strong>Ponderaciones:</strong> ${docente.ponderaciones}.</p>
             <span class="docente-nota">Datos de demostración</span>
         `;
+
     } else {
+
         informacion = `
             <p class="dato-docente"><strong>Materia:</strong> ${docente.materia}.</p>
             <p class="dato-docente"><strong>Forma de enseñanza:</strong> Pendiente de confirmar.</p>
@@ -342,6 +348,7 @@ docentes.forEach(function(docente) {
             <p class="dato-docente"><strong>Ponderaciones:</strong> Pendiente de confirmar.</p>
             <span class="docente-nota">Información pendiente de confirmar</span>
         `;
+
     }
 
     tarjeta.innerHTML = `
@@ -356,7 +363,6 @@ docentes.forEach(function(docente) {
 
 });
 
-// Buscador de docentes
 buscador.addEventListener("input", function() {
 
     const texto = this.value
