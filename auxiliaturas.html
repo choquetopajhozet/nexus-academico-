@@ -172,6 +172,39 @@
             transform: translateY(-3px);
         }
 
+        .material-estadistica {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f4f6fa;
+            border-radius: 12px;
+            border: 1px solid #e3e7ef;
+        }
+
+        .material-estadistica.visible {
+            display: block;
+        }
+
+        .material-estadistica h3 {
+            color: #0b1730;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .material-estadistica p {
+            text-align: center;
+            color: #5c6678;
+        }
+
+        .material-estadistica img {
+            width: 100%;
+            max-width: 850px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
         footer {
             background: #0b1730;
             color: #d9e1ef;
@@ -264,9 +297,27 @@
 
             <a href="documentos/MAT/ESTADÍSTICA I (MAT 1135).pdf" target="_blank" rel="noopener">MAT 1135</a>
 
-            <button onclick="mostrarAviso('MAT 1437')">MAT 1437</button>
+            <button onclick="mostrarEstadistica()">MAT 1437</button>
 
         </div>
+
+        <!-- IMÁGENES MAT 1437 -->
+        <div id="estadistica1437" class="material-estadistica">
+
+            <h3>Estadística Aplicada (MAT 1437)</h3>
+
+            <p>Material de auxiliatura</p>
+
+            <img
+                src="imagenes/Estadística Aplicada (MAT 1437) -1.jpg"
+                alt="Estadística Aplicada - Página 1">
+
+            <img
+                src="imagenes/Estadística Aplicada (MAT 1437) -2.jpg"
+                alt="Estadística Aplicada - Página 2">
+
+        </div>
+
     </section>
 
     <!-- FÍSICA -->
@@ -320,13 +371,11 @@
         boton.classList.add('activo');
     }
 
-    function mostrarAviso(materia) {
+    function mostrarEstadistica() {
 
-        alert(
-            'Los recursos de la auxiliatura de ' +
-            materia +
-            ' estarán disponibles próximamente.'
-        );
+        const contenido = document.getElementById('estadistica1437');
+
+        contenido.classList.toggle('visible');
 
     }
 
@@ -334,4 +383,3 @@
 
 </body>
 </html>
-
