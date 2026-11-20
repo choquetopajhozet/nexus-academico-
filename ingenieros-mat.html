@@ -197,6 +197,10 @@ footer {
         placeholder="Buscar docente por nombre..."
     >
 
+    <p id="contador" style="text-align:center; color:#697386; margin:-15px auto 25px;">
+        35 docentes registrados
+    </p>
+
     <section class="lista-docentes" id="listaDocentes"></section>
 
     <p class="sin-resultados" id="sinResultados">
@@ -211,181 +215,41 @@ footer {
 
 <script>
 const docentes = [
-    {
-        nombre: "Achocalla Tarqui Esteban",
-        ponderacion: "Prácticas 20%, parciales 40% y final 40%",
-        demo: true
-    },
-    {
-        nombre: "Aguilar Vera René Arturo",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Antezana García René",
-        ponderacion: "Trabajos 15%, prácticas 25%, parciales 30% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Arancibia Balderrama Jhonny Roger Hanz",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Bazán Astete Carmen Rosario",
-        ponderacion: "Prácticas 30%, parciales 30% y final 40%",
-        demo: true
-    },
-    {
-        nombre: "Blanco Benito Armengol",
-        ponderacion: "Sin distribución registrada",
-        demo: false
-    },
-    {
-        nombre: "Challapa Chura Climan",
-        ponderacion: "Trabajos 20%, parciales 50% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Chura Miranda Carlos Raúl",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Colque Alconce Adolfo",
-        ponderacion: "Prácticas 25%, parciales 35% y final 40%",
-        demo: true
-    },
-    {
-        nombre: "Copa Cruz Jorge Larry",
-        ponderacion: "Pendiente de información",
-        demo: false
-    },
-    {
-        nombre: "Cornejo Ramos Javier Milton",
-        ponderacion: "Trabajos 10%, prácticas 20%, parciales 40% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Escalante Lunario Marco Antonio",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "García Ocaña Néstor Dennis",
-        ponderacion: "Prácticas 20%, parciales 50% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Guzmán García Alex David",
-        ponderacion: "Sin información disponible",
-        demo: false
-    },
-    {
-        nombre: "Herrera Dalence Germán Wilfredo",
-        ponderacion: "Trabajos 25%, parciales 35% y final 40%",
-        demo: true
-    },
-    {
-        nombre: "Ilaya Ayza Amilkar Ernesto",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Ismael Rojas David Emilio",
-        ponderacion: "Prácticas 15%, parciales 45% y final 40%",
-        demo: true
-    },
-    {
-        nombre: "Jemio Ortuño Carlos Marcos",
-        ponderacion: "Pendiente de registro",
-        demo: false
-    },
-    {
-        nombre: "Loza Barriga Gustavo",
-        ponderacion: "Trabajos 20%, prácticas 30%, parciales 20% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Mamani Guaygua Julio",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Medinaceli Ortiz Rubén",
-        ponderacion: "Prácticas 25%, parciales 40% y final 35%",
-        demo: true
-    },
-    {
-        nombre: "Mendoza Vargas Juan",
-        ponderacion: "Sin datos registrados",
-        demo: false
-    },
-    {
-        nombre: "Mercado Espinoza Leonardo",
-        ponderacion: "Trabajos 15%, prácticas 25%, parciales 40% y final 20%",
-        demo: true
-    },
-    {
-        nombre: "Morales Gutiérrez Jorge Iván",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Morando Guzmán Pamela Moramay",
-        ponderacion: "Prácticas 20%, parciales 30% y final 50%",
-        demo: true
-    },
-    {
-        nombre: "Ríos Herrera Víctor",
-        ponderacion: "Pendiente de información",
-        demo: false
-    },
-    {
-        nombre: "Rivero Veliz Miguel Ángel",
-        ponderacion: "Trabajos 20%, prácticas 20%, parciales 30% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Rodríguez Blacutt Julio César",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Rojas Rodríguez José Paulo",
-        ponderacion: "Prácticas 30%, parciales 40% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Terán Velásquez Alcides",
-        ponderacion: "Sin información registrada",
-        demo: false
-    },
-    {
-        nombre: "Urquizo Sandoval Seus Cristian",
-        ponderacion: "Trabajos 10%, prácticas 30%, parciales 30% y final 30%",
-        demo: true
-    },
-    {
-        nombre: "Vargas Oroza José Alfredo",
-        ponderacion: "Por confirmar",
-        demo: false
-    },
-    {
-        nombre: "Villanueva Fulguera Franklin Humberto",
-        ponderacion: "Prácticas 20%, parciales 40% y final 40%",
-        demo: true
-    },
-    {
-        nombre: "Zambrana Rodríguez Freddy Jhony",
-        ponderacion: "Pendiente de información",
-        demo: false
-    },
-    {
-        nombre: "Zubieta Arce Juan Jaime",
-        ponderacion: "Por confirmar",
-        demo: false
-    }
+    { nombre: "Achocalla Tarqui Esteban", ponderacion: "Prácticas 20%, parciales 40% y final 40%", demo: true },
+    { nombre: "Aguilar Vera René Arturo", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Antezana García René", ponderacion: "Trabajos 15%, prácticas 25%, parciales 30% y final 30%", demo: true },
+    { nombre: "Arancibia Balderrama Jhonny Roger Hanz", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Bazán Astete Carmen Rosario", ponderacion: "Prácticas 30%, parciales 30% y final 40%", demo: true },
+    { nombre: "Blanco Benito Armengol", ponderacion: "Sin distribución registrada", demo: false },
+    { nombre: "Challapa Chura Climan", ponderacion: "Trabajos 20%, parciales 50% y final 30%", demo: true },
+    { nombre: "Chura Miranda Carlos Raúl", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Colque Alconce Adolfo", ponderacion: "Prácticas 25%, parciales 35% y final 40%", demo: true },
+    { nombre: "Copa Cruz Jorge Larry", ponderacion: "Pendiente de información", demo: false },
+    { nombre: "Cornejo Ramos Javier Milton", ponderacion: "Trabajos 10%, prácticas 20%, parciales 40% y final 30%", demo: true },
+    { nombre: "Escalante Lunario Marco Antonio", ponderacion: "Por confirmar", demo: false },
+    { nombre: "García Ocaña Néstor Dennis", ponderacion: "Prácticas 20%, parciales 50% y final 30%", demo: true },
+    { nombre: "Guzmán García Alex David", ponderacion: "Sin información disponible", demo: false },
+    { nombre: "Herrera Dalence Germán Wilfredo", ponderacion: "Trabajos 25%, parciales 35% y final 40%", demo: true },
+    { nombre: "Ilaya Ayza Amilkar Ernesto", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Ismael Rojas David Emilio", ponderacion: "Prácticas 15%, parciales 45% y final 40%", demo: true },
+    { nombre: "Jemio Ortuño Carlos Marcos", ponderacion: "Pendiente de registro", demo: false },
+    { nombre: "Loza Barriga Gustavo", ponderacion: "Trabajos 20%, prácticas 30%, parciales 20% y final 30%", demo: true },
+    { nombre: "Mamani Guaygua Julio", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Medinaceli Ortiz Rubén", ponderacion: "Prácticas 25%, parciales 40% y final 35%", demo: true },
+    { nombre: "Mendoza Vargas Juan", ponderacion: "Sin datos registrados", demo: false },
+    { nombre: "Mercado Espinoza Leonardo", ponderacion: "Trabajos 15%, prácticas 25%, parciales 40% y final 20%", demo: true },
+    { nombre: "Morales Gutiérrez Jorge Iván", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Morando Guzmán Pamela Moramay", ponderacion: "Prácticas 20%, parciales 30% y final 50%", demo: true },
+    { nombre: "Ríos Herrera Víctor", ponderacion: "Pendiente de información", demo: false },
+    { nombre: "Rivero Veliz Miguel Ángel", ponderacion: "Trabajos 20%, prácticas 20%, parciales 30% y final 30%", demo: true },
+    { nombre: "Rodríguez Blacutt Julio César", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Rojas Rodríguez José Paulo", ponderacion: "Prácticas 30%, parciales 40% y final 30%", demo: true },
+    { nombre: "Terán Velásquez Alcides", ponderacion: "Sin información registrada", demo: false },
+    { nombre: "Urquizo Sandoval Seus Cristian", ponderacion: "Trabajos 10%, prácticas 30%, parciales 30% y final 30%", demo: true },
+    { nombre: "Vargas Oroza José Alfredo", ponderacion: "Por confirmar", demo: false },
+    { nombre: "Villanueva Fulguera Franklin Humberto", ponderacion: "Prácticas 20%, parciales 40% y final 40%", demo: true },
+    { nombre: "Zambrana Rodríguez Freddy Jhony", ponderacion: "Pendiente de información", demo: false },
+    { nombre: "Zubieta Arce Juan Jaime", ponderacion: "Por confirmar", demo: false }
 ];
 
 function obtenerIniciales(nombre) {
@@ -396,6 +260,10 @@ function obtenerIniciales(nombre) {
 function mostrarDocentes(lista) {
     const contenedor = document.getElementById("listaDocentes");
     const sinResultados = document.getElementById("sinResultados");
+    const contador = document.getElementById("contador");
+
+    contador.textContent = lista.length +
+        (lista.length === 1 ? " docente encontrado" : " docentes encontrados");
 
     contenedor.innerHTML = "";
 
@@ -416,18 +284,10 @@ function mostrarDocentes(lista) {
             </div>
 
             <p><strong>Materia:</strong> Matemática.</p>
-
-            <p><strong>Forma de enseñanza:</strong>
-            Información por confirmar.</p>
-
-            <p><strong>Prácticas:</strong>
-            Pendientes de información.</p>
-
-            <p><strong>Evaluaciones:</strong>
-            Por confirmar.</p>
-
-            <p><strong>Ponderaciones:</strong>
-            ${docente.ponderacion}.</p>
+            <p><strong>Forma de enseñanza:</strong> Información por confirmar.</p>
+            <p><strong>Prácticas:</strong> Pendientes de información.</p>
+            <p><strong>Evaluaciones:</strong> Por confirmar.</p>
+            <p><strong>Ponderaciones:</strong> ${docente.ponderacion}.</p>
 
             ${etiqueta}
         `;
@@ -439,11 +299,19 @@ function mostrarDocentes(lista) {
         lista.length === 0 ? "block" : "none";
 }
 
+function normalizarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+}
+
 document.getElementById("buscar").addEventListener("input", function() {
-    const texto = this.value.toLowerCase().trim();
+    const texto = normalizarTexto(this.value);
 
     const filtrados = docentes.filter(docente =>
-        docente.nombre.toLowerCase().includes(texto)
+        normalizarTexto(docente.nombre).includes(texto)
     );
 
     mostrarDocentes(filtrados);
@@ -454,4 +322,5 @@ mostrarDocentes(docentes);
 
 </body>
 </html>
+
 
