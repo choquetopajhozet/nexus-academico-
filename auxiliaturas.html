@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -147,7 +148,9 @@
             gap: 14px;
         }
 
+        .materias a,
         .materias button {
+            display: block;
             background: #10264a;
             color: white;
             border: 1px solid #d4af37;
@@ -157,8 +160,12 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.25s;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
         }
 
+        .materias a:hover,
         .materias button:hover {
             background: #d4af37;
             color: #0b1730;
@@ -203,6 +210,7 @@
 </header>
 
 <main>
+
     <a href="./index.html" class="volver">← Volver al inicio</a>
 
     <section class="presentacion">
@@ -214,6 +222,7 @@
     </section>
 
     <div class="departamentos">
+
         <button class="boton-departamento"
                 onclick="mostrarDepartamento('mat', this)">
             MAT
@@ -231,41 +240,60 @@
             QMC
             <span>Química</span>
         </button>
+
     </div>
 
     <!-- MATEMÁTICA -->
     <section id="mat" class="departamento">
+
         <h2>Auxiliaturas de Matemática</h2>
 
         <div class="materias">
-            <button onclick="mostrarAviso('MAT 1100')">MAT 1100</button>
-            <button onclick="mostrarAviso('MAT 1101')">MAT 1101</button>
-            <button onclick="mostrarAviso('MAT 1102')">MAT 1102</button>
-            <button onclick="mostrarAviso('MAT 1103')">MAT 1103</button>
-            <button onclick="mostrarAviso('MAT 1105')">MAT 1105</button>
-            <button onclick="mostrarAviso('MAT 1207')">MAT 1207</button>
-            <button onclick="mostrarAviso('MAT 1135')">MAT 1135</button>
+
+            <a href="documentos/MAT/ÁLGEBRA I (MAT 1100).pdf" target="_blank" rel="noopener">MAT 1100</a>
+
+            <a href="documentos/MAT/CÁLCULO I (MAT 1101).pdf" target="_blank" rel="noopener">MAT 1101</a>
+
+            <a href="documentos/MAT/CÁLCULO II (MAT 1102).pdf" target="_blank" rel="noopener">MAT 1102</a>
+
+            <a href="documentos/MAT/ÁLGEBRA II (MAT 1103).pdf" target="_blank" rel="noopener">MAT 1103</a>
+
+            <a href="documentos/MAT/MÉTODOS NUMÉRICOS I (MAT 1105).pdf" target="_blank" rel="noopener">MAT 1105</a>
+
+            <a href="documentos/MAT/ECUACIONES DIFERENCIALES I (MAT 1207).pdf" target="_blank" rel="noopener">MAT 1207</a>
+
+            <a href="documentos/MAT/ESTADÍSTICA I (MAT 1135).pdf" target="_blank" rel="noopener">MAT 1135</a>
+
             <button onclick="mostrarAviso('MAT 1437')">MAT 1437</button>
+
         </div>
     </section>
 
     <!-- FÍSICA -->
     <section id="fis" class="departamento">
+
         <h2>Auxiliaturas de Física</h2>
 
         <div class="materias">
-            <button onclick="mostrarAviso('FIS 1100')">FIS 1100</button>
-            <button onclick="mostrarAviso('FIS 1102')">FIS 1102</button>
-            <button onclick="mostrarAviso('FIS 1200')">FIS 1200</button>
+
+            <a href="documentos/FIS/Física I (FIS 1100).pdf" target="_blank" rel="noopener">FIS 1100</a>
+
+            <a href="documentos/FIS/Física II (FIS 1102).pdf" target="_blank" rel="noopener">FIS 1102</a>
+
+            <a href="documentos/FIS/Física III (FIS 1200).pdf" target="_blank" rel="noopener">FIS 1200</a>
+
         </div>
     </section>
 
     <!-- QUÍMICA -->
     <section id="qmc" class="departamento">
+
         <h2>Auxiliaturas de Química</h2>
 
         <div class="materias">
-            <button onclick="mostrarAviso('QMC 1100')">QMC 1100</button>
+
+            <a href="documentos/QMC/Química General (QMC 1100).pdf" target="_blank" rel="noopener">QMC 1100</a>
+
         </div>
     </section>
 
@@ -276,7 +304,9 @@
 </footer>
 
 <script>
+
     function mostrarDepartamento(id, boton) {
+
         document.querySelectorAll('.departamento').forEach(function(seccion) {
             seccion.classList.remove('visible');
         });
@@ -286,16 +316,20 @@
         });
 
         document.getElementById(id).classList.add('visible');
+
         boton.classList.add('activo');
     }
 
     function mostrarAviso(materia) {
+
         alert(
             'Los recursos de la auxiliatura de ' +
             materia +
             ' estarán disponibles próximamente.'
         );
+
     }
+
 </script>
 
 </body>
